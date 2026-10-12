@@ -91,9 +91,9 @@ and for the guides in #812.
 
 These are deliberately left in square brackets. They are unresolved decisions, not typos.
 
-- `[DATE]` / `[DATUM]`: the policy's last-updated date (both privacy pages).
-- `[Name or company]`, `[street and number]`, `[postcode and city]`, `[country]` and the German
-  equivalents: who is responsible.
+The responsible party (Nicolas Hiller and his postal address) and the policy date (12 October 2026) are
+filled in. Update the date whenever the policy text changes.
+
 - The hosting sentence in "This website" (GitHub Pages and server logs), pending legal review.
 - The rights paragraph in "Your choices and rights", pending legal review.
 - The German footer has an HTML comment where an Impressum link would go. It is omitted until it is

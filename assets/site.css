@@ -105,6 +105,18 @@ code {
   overflow-wrap: anywhere;
 }
 
+.nb { white-space: nowrap; }
+
+code.ext {
+  padding: 0.04em 0.32em;
+  border: 1px solid var(--line2);
+  border-radius: 0.3em;
+  background: var(--card);
+  font-size: 0.86em;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
 .skip {
   position: absolute;
   left: var(--gutter);

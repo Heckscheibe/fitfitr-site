@@ -1,6 +1,6 @@
 # fitfitr-site
 
-The public website for [FitFitr](https://fitfitr.app), an iOS app for repairing `.fit` activity files.
+The public website for [FitFitr](https://fitfitr.app), an iOS app for editing `.fit` activity files.
 It is a small static site served by GitHub Pages from `main`, folder `/`, at `https://fitfitr.app`.
 English and German, plain HTML and one CSS file, no build step, no frameworks, no cookies, no analytics
 and no requests to any other host.

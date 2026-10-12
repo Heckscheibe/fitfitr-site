@@ -72,6 +72,21 @@ The script rewrites the block between `<!-- events:start -->` and `<!-- events:e
 privacy pages and refuses to run unless it finds exactly 32 events. `--check` writes nothing and
 exits 1 when a page is out of date.
 
+## Voice
+
+The page talks about **editing and sharing**, in active, direct sentences. Use this for every new page
+and for the guides in #812.
+
+- **Lead with what the reader does.** Imperative verbs: edit, remove, cut, merge, share. German uses the
+  informal imperative ("Bearbeite", "Teile").
+- **FitFitr is an editor, not an automatic repair tool.** The reader decides what to remove, replace or
+  cut. Do not write that the app "fixes" or "repairs" a file, and do not promise anything happens by itself.
+- **The output verb is "share".** Not "send on" or "forward". Say where a file can go: Files, the share
+  sheet, Strava.
+- **Short sentences, one idea each.** The headline is two short sentences, for example "Edit your .fit
+  files. Share them anywhere." / "Bearbeite deine .fit-Dateien. Teile sie, wohin du willst."
+- **It is not a training log.** Never describe it as tracking, recording or syncing.
+
 ## Open placeholders
 
 These are deliberately left in square brackets. They are unresolved decisions, not typos.

@@ -1,0 +1,86 @@
+# fitfitr-site
+
+The public website for [FitFitr](https://fitfitr.app), an iOS app for repairing `.fit` activity files.
+It is a small static site served by GitHub Pages from `main`, folder `/`, at `https://fitfitr.app`.
+English and German, plain HTML and one CSS file, no build step, no frameworks, no cookies, no analytics
+and no requests to any other host.
+
+This issue (#318 in the app repository) ships the privacy policy, the support page and a minimal landing
+page. The full landing page and the how-to guides follow in #812.
+
+## URL map
+
+| Page | English | Deutsch |
+|---|---|---|
+| Language chooser | `/` | `/` |
+| Landing | `/en/` | `/de/` |
+| Privacy policy | `/en/privacy/` | `/de/datenschutz/` |
+| Support | `/en/support/` | `/de/support/` |
+| Not found | `/404.html` | (bilingual) |
+| Guides, reserved for #812 | `/en/guides/` | `/de/anleitungen/` |
+
+Each page is `<dir>/index.html`. Links are root-relative, so the site must be served from the domain
+root (`python3 -m http.server` from the repository root does that).
+
+## Layout
+
+```
+index.html, 404.html        language chooser, bilingual not-found page
+en/, de/                    one folder per language
+assets/site.css             all styling, light and dark token sets as CSS custom properties
+assets/theme.js             light/dark switch, loaded synchronously in <head>
+assets/icon.png             app icon, 512 px
+scripts/check.py            link, anchor, hreflang and external-resource checks
+scripts/render_events.py    renders the event tables of the privacy policy
+CNAME, .nojekyll            custom domain, no Jekyll processing
+```
+
+The light/dark switch stores only the string `light` or `dark` in `localStorage` under the key
+`fitfitr-theme`. Without JavaScript the page follows the device's `prefers-color-scheme` and
+everything is still readable.
+
+## Checks
+
+```
+python3 scripts/check.py
+```
+
+Standard library only. It fails (exit code 1) on a broken internal link or `#anchor`, a missing or
+non-reciprocal `hreflang` partner, any `http://` URL, an off-site script, stylesheet, font, icon or
+image, an inline script, a page without `lang`, title, description, viewport or exactly one `h1`, and
+a wrong `CNAME`. It prints every remaining `[bracketed placeholder]` as a warning.
+
+## Privacy policy event tables
+
+The tables under "Every event the app can send" are generated from the app's `PRIVACY.md`, so the
+policy and the app cannot drift apart:
+
+```
+python3 scripts/render_events.py --source /path/to/PRIVACY.md
+python3 scripts/render_events.py --source /path/to/PRIVACY.md --check
+```
+
+The script rewrites the block between `<!-- events:start -->` and `<!-- events:end -->` in both
+privacy pages and refuses to run unless it finds exactly 32 events. `--check` writes nothing and
+exits 1 when a page is out of date.
+
+## Open placeholders
+
+These are deliberately left in square brackets. They are unresolved decisions, not typos.
+
+- `[DATE]` / `[DATUM]`: the policy's last-updated date (both privacy pages).
+- `[Name or company]`, `[street and number]`, `[postcode and city]`, `[country]` and the German
+  equivalents: who is responsible.
+- The hosting sentence in "This website" (GitHub Pages and server logs), pending legal review.
+- The rights paragraph in "Your choices and rights", pending legal review.
+- The German footer has an HTML comment where an Impressum link would go. It is omitted until it is
+  decided whether an imprint is required.
+- The landing page shows a plain "Coming soon to the App Store" label where Apple's official badge
+  and the store URL go once the app is listed (see the `TODO` comment in `en/index.html` and
+  `de/index.html`).
+
+## What #812 changes
+
+#812 adds guides under `/en/guides/` and `/de/anleitungen/` and replaces the two landing pages
+(`/en/`, `/de/`) at the same URLs. It never edits the privacy policy or the support page, and the
+header and footer stay identical on every page.

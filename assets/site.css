@@ -358,6 +358,16 @@ h3 {
   padding: 64px var(--pad-x) 96px;
 }
 
+.center-page-chooser {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-block: 48px;
+}
+.center-page-chooser .chooser { justify-content: center; }
+
+.site-header > .site-nav:only-child { margin-left: auto; }
+
 .chooser {
   display: flex;
   flex-wrap: wrap;

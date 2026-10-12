@@ -8,6 +8,8 @@ Fails (exit 1) on:
   - an off-site script, stylesheet, font, icon or image
   - a page without lang, title, description, viewport or exactly one h1
   - a missing or wrong CNAME, or a missing .nojekyll
+  - a root page that does not load assets/lang-redirect.js before the stylesheet,
+    or lacks the <noscript> meta refresh to /en/
 Warns (does not fail) about every remaining [bracketed placeholder].
 
 Usage: python3 scripts/check.py
@@ -185,6 +187,20 @@ def main():
         text = "".join(body_p.text)
         for m in re.finditer(r"\[[^\]\[]+\]", text):
             warnings.append(f"{name}: {m.group(0)}")
+
+    root_index = ROOT / "index.html"
+    if root_index.is_file():
+        raw = root_index.read_text(encoding="utf-8")
+        redirect = raw.find('<script src="/assets/lang-redirect.js"></script>')
+        sheet = raw.find('<link rel="stylesheet"')
+        if redirect < 0:
+            errors.append("index.html: does not load /assets/lang-redirect.js synchronously in <head>")
+        elif sheet >= 0 and redirect > sheet:
+            errors.append("index.html: lang-redirect.js must be loaded before the stylesheet")
+        if not re.search(r'<noscript>\s*<meta http-equiv="refresh" content="0;\s*url=/en/">\s*</noscript>', raw):
+            errors.append('index.html: missing <noscript><meta http-equiv="refresh" content="0; url=/en/"></noscript>')
+        if not (ROOT / "assets" / "lang-redirect.js").is_file():
+            errors.append("assets/lang-redirect.js is missing")
 
     cname = ROOT / "CNAME"
     if not cname.is_file() or cname.read_text() != DOMAIN:

@@ -12,12 +12,18 @@ page. The full landing page and the how-to guides follow in #812.
 
 | Page | English | Deutsch |
 |---|---|---|
-| Language chooser | `/` | `/` |
+| Start page: forwards to the visitor's language, falls back to a language chooser | `/` | `/` |
 | Landing | `/en/` | `/de/` |
 | Privacy policy | `/en/privacy/` | `/de/datenschutz/` |
 | Support | `/en/support/` | `/de/support/` |
 | Not found | `/404.html` | (bilingual) |
 | Guides, reserved for #812 | `/en/guides/` | `/de/anleitungen/` |
+
+`/` forwards each visitor to `/de/` or `/en/` with `assets/lang-redirect.js`, which reads
+`navigator.languages` once and sends the first German or English entry (English when none matches,
+or when JavaScript is off, via a `<noscript>` meta refresh). It uses `location.replace()` so Back does
+not loop, drops any query string and hash, and stores and sends nothing. The page body (wordmark and
+two language buttons) only shows if both mechanisms fail.
 
 Each page is `<dir>/index.html`. Links are root-relative, so the site must be served from the domain
 root (`python3 -m http.server` from the repository root does that).
@@ -25,10 +31,11 @@ root (`python3 -m http.server` from the repository root does that).
 ## Layout
 
 ```
-index.html, 404.html        language chooser, bilingual not-found page
+index.html, 404.html        language redirect with chooser fallback, bilingual not-found page
 en/, de/                    one folder per language
 assets/site.css             all styling, light and dark token sets as CSS custom properties
 assets/theme.js             light/dark switch, loaded synchronously in <head>
+assets/lang-redirect.js     language redirect of the start page, loaded only by index.html
 assets/icon.png             app icon, 512 px
 scripts/check.py            link, anchor, hreflang and external-resource checks
 scripts/render_events.py    renders the event tables of the privacy policy
@@ -48,7 +55,8 @@ python3 scripts/check.py
 Standard library only. It fails (exit code 1) on a broken internal link or `#anchor`, a missing or
 non-reciprocal `hreflang` partner, any `http://` URL, an off-site script, stylesheet, font, icon or
 image, an inline script, a page without `lang`, title, description, viewport or exactly one `h1`, and
-a wrong `CNAME`. It prints every remaining `[bracketed placeholder]` as a warning.
+a wrong `CNAME`, and a start page that does not load `lang-redirect.js` before the stylesheet or lacks
+its `<noscript>` meta refresh to `/en/`. It prints every remaining `[bracketed placeholder]` as a warning.
 
 ## Privacy policy event tables
 

@@ -84,7 +84,7 @@ and for the guides in #812.
 - **The output verb is "share".** Not "send on" or "forward". Say where a file can go: Files, the share
   sheet, Strava.
 - **Short sentences, one idea each.** The headline is two short sentences, for example "Edit your .fit
-  files. Share them anywhere." / "Bearbeite deine .fit-Dateien. Teile sie, wohin du willst."
+  files. Share them anywhere." / "Bearbeite deine .fit-Dateien. Teile sie, wo du willst."
 - **It is not a training log.** Never describe it as tracking, recording or syncing.
 
 ## Open placeholders

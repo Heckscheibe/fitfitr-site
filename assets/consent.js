@@ -2,6 +2,8 @@
    The only file that may talk to another host. Nothing is requested from Google until the visitor
    presses "Accept", and the choice is remembered as the word granted or denied in localStorage.
    While MEASUREMENT_ID is the placeholder, this file does nothing: no banner, no request.
+   One event is sent besides page views: app_store_click, when a visitor who agreed follows a link marked
+   data-store, with a fixed placement word (hero, final or guide) and the page language. Nothing else.
    The site is fully readable without this file. */
 (function () {
   'use strict';
@@ -160,7 +162,23 @@
     nav.appendChild(b);
   }
 
+  var PLACEMENTS = { hero: 1, final: 1, guide: 1 };
+
+  function trackStoreClick(event) {
+    var el = event.target && event.target.closest ? event.target.closest('a[data-store]') : null;
+    var placement = el ? el.getAttribute('data-store') : null;
+    if (!loaded || !window.gtag || window['ga-disable-' + MEASUREMENT_ID] || !PLACEMENTS[placement]) {
+      return;
+    }
+    window.gtag('event', 'app_store_click', {
+      placement: placement,
+      language: de ? 'de' : 'en',
+      transport_type: 'beacon'
+    });
+  }
+
   function init() {
+    document.addEventListener('click', trackStoreClick);
     addFooterLink();
     var stored = read();
     if (stored === 'granted') {

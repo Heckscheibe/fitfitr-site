@@ -239,6 +239,22 @@ def main():
         if not (ROOT / "assets" / "lang-redirect.js").is_file():
             errors.append("assets/lang-redirect.js is missing")
 
+    store_links = 0
+    for f in sorted(ROOT.rglob("*.html")):
+        if ".git" in f.parts:
+            continue
+        raw = f.read_text(encoding="utf-8")
+        for m in re.finditer(r'<a\b[^>]*href="(https://apps\.apple\.com[^"]*)"[^>]*>', raw):
+            store_links += 1
+            tag, href = m.group(0), m.group(1)
+            q = urlsplit(href).query
+            if not re.search(r'data-store="(hero|final|guide)"', tag):
+                errors.append(f"{rel(f)}: App Store link without data-store=hero|final|guide: {href}")
+            if "pt=" not in q or "ct=" not in q:
+                errors.append(f"{rel(f)}: App Store link without pt= and ct= campaign tokens: {href}")
+    if store_links == 0:
+        warnings.append("no App Store link yet: the store blocks still say Coming soon (see WEBSITE.md)")
+
     consent = ROOT / "assets" / "consent.js"
     if not consent.is_file():
         errors.append("assets/consent.js is missing")

@@ -6,7 +6,7 @@
 (function () {
   'use strict';
 
-  var MEASUREMENT_ID = 'G-XXXXXXXXXX';
+  var MEASUREMENT_ID = 'G-9NC65YPN99';
   var KEY = 'fitfitr-consent';
 
   if (!/^G-[A-Z0-9]{6,}$/.test(MEASUREMENT_ID) || /^G-X+$/.test(MEASUREMENT_ID)) {

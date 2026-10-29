@@ -2,8 +2,8 @@
 
 The public website for [FitFitr](https://fitfitr.app), an iOS app for editing `.fit` activity files.
 It is a small static site served by GitHub Pages from `main`, folder `/`, at `https://fitfitr.app`.
-English and German, plain HTML and one CSS file, no build step, no frameworks, no cookies, no analytics
-and no requests to any other host.
+English and German, plain HTML and one CSS file, no build step, no frameworks. No cookies and no requests to any other host until a visitor accepts the analytics
+banner (`assets/consent.js`, Google Analytics for Firebase).
 
 This issue (#318 in the app repository) ships the privacy policy, the support page and a minimal landing
 page. The full landing page and the how-to guides follow in #812.
@@ -35,6 +35,8 @@ index.html, 404.html        language redirect with chooser fallback, bilingual n
 en/, de/                    one folder per language
 assets/site.css             all styling, light and dark token sets as CSS custom properties
 assets/theme.js             light/dark switch, loaded synchronously in <head>
+assets/consent.js           consent banner and opt-in Google Analytics; inert while MEASUREMENT_ID is the placeholder
+robots.txt, sitemap.xml, llms.txt   crawler rules, the page list with hreflang, and a plain summary for AI assistants
 assets/lang-redirect.js     language redirect of the start page, loaded only by index.html
 assets/icon.png             app icon, 512 px
 scripts/check.py            link, anchor, hreflang and external-resource checks

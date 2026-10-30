@@ -39,15 +39,15 @@
 <main id="main" class="page">
 <div class="page-head">
 <h1>Datenschutzerklärung</h1>
-<p class="lead">Gilt für die FitFitr-App für iPhone und iPad und für diese Website. Stand: 20. Oktober 2026.</p>
+<p class="lead">Gilt für die FitFitr-App für iPhone und iPad und für diese Website. Stand: 30. Oktober 2026.</p>
 </div>
 
 <div class="card">
 <h2>Kurzfassung</h2>
 <ul>
 <li>Deine <span class="nb"><code class="ext">.fit</code>-Dateien</span> werden auf deinem Gerät geöffnet und bearbeitet. FitFitr hat kein Konto und keinen eigenen Server.</li>
-<li>Nichts verlässt dein Gerät, wenn du es nicht selbst auslöst: Du lädst zu Strava hoch oder gibst eine Datei weiter.</li>
-<li>Analyse und Absturzberichte sind aus, bis du sie einschaltest. Sie enthalten nie Dateiinhalte, Dateinamen, Orte oder Zeiten.</li>
+<li>Deine Datei verlässt dein Gerät nur, wenn du sie teilst oder zu Strava hochlädst. Eine Ausnahme: Öffnest du eine Datei mit GPS, sendet FitFitr eine gerundete Koordinate an Apple, um den Ort zu benennen.</li>
+<li>Analyse und Absturzberichte sind aus, bis du sie einschaltest. Sie enthalten nie deinen GPS-Track, deine Sensorwerte, Dateinamen oder Aktivitätszeiten.</li>
 <li>Du kannst sie jederzeit wieder ausschalten.</li>
 </ul>
 </div>
@@ -65,6 +65,7 @@
 <a href="#label">Das Datenschutz-Label im App Store</a>
 <a href="#empfaenger">Wer was erhält</a>
 <a href="#website">Diese Website</a>
+<a href="#email">Wenn du uns schreibst</a>
 <a href="#rechte">Deine Entscheidungen und Rechte</a>
 <a href="#aenderungen">Änderungen</a>
 </nav>
@@ -80,13 +81,14 @@
 <section id="geraet">
 <h2>Was auf deinem Gerät bleibt</h2>
 <p>FitFitr liest eine <span class="nb"><code class="ext">.fit</code>-Datei</span>, zeigt dir die Änderung und schreibt das Ergebnis dorthin, wo du es haben willst. Das alles passiert auf deinem iPhone oder iPad. Es gibt kein Konto und keinen eigenen Server von FitFitr, an den deine Datei gehen könnte.</p>
-<p>Etwas erhalten können nur du, dein Gerät und die Dienste, die du in der App selbst nutzt. Sie sind unten beschrieben.</p>
+<p>Deine Datei geht nur dorthin, wohin du sie schickst. Zwei andere Dinge können dein Gerät verlassen, beide unten beschrieben: Analyse und Absturzberichte, wenn du zustimmst, und eine gerundete Koordinate für den Ortsnamen.</p>
 </section>
 
 <section id="analyse" class="stack-lg">
 <h2>Analyse und Absturzberichte</h2>
 <p>Beides ist nach der Installation aus und bleibt aus, bis du es einschaltest. Beim ersten Start gibt es keine Einwilligungsabfrage, und die Software für Analyse und Absturzberichte startet erst, wenn du zustimmst.</p>
 <p>Mit deiner Einwilligung sendet FitFitr Ereignisse an Google Analytics für Firebase und Absturzberichte an Firebase Crashlytics, beides von Google betrieben. Jeder Wert ist ein Name aus einer festen Liste, ein Ja oder Nein oder eine Größenklasse wie klein oder groß. Genaue Zahlen werden nie gesendet.</p>
+<p>Die Daten tragen keinen Namen, anonym sind sie aber nicht. Jedes Ereignis enthält eine zufällige Kennung, die Firebase dieser Installation gibt, sodass sich Ereignisse einer Installation miteinander verknüpfen lassen. Absturzberichte enthalten eigene zufällige Installationskennungen. Keine dieser Kennungen enthält deinen Namen oder eine Werbe-Kennung. Google Analytics ermittelt aus der IP-Adresse der Verbindung das Land und speichert die Adresse nicht.</p>
 <div class="panel">
 <h3>Nie erhoben</h3>
 <ul>
@@ -100,8 +102,9 @@
 </ul>
 </div>
 <p>Firebase protokolliert außerdem einige eigene Ereignisse: den ersten Start, eine neue Sitzung, die Zeit in der App sowie App- und iOS-Updates. Sie enthalten die App- und iOS-Version sowie Gerätemodell, Sprache und Land, aber nichts aus einer Datei.</p>
-<p>Ein Absturzbericht enthält die Abfolge der Ereignisnamen unmittelbar vor dem Absturz, damit sich das Problem nachstellen lässt. Es sind dieselben Werte aus festen Listen, sonst nichts.</p>
-<p><strong>Speicherdauer:</strong> Google Analytics speichert diese Daten 14 Monate.</p>
+<p>Ein Absturzbericht enthält die Abfolge der Ereignisnamen unmittelbar vor dem Absturz, damit sich das Problem nachstellen lässt. Diese Abfolge enthält dieselben Werte aus festen Listen, sonst nichts.</p>
+<p><strong>Speicherdauer:</strong> Google Analytics bewahrt Ereignisdaten, die an die Kennung gebunden sind, 14 Monate auf. Danach bleiben nur zusammengefasste Werte in den Standardberichten. Crashlytics bewahrt Absturzberichte und ihre Kennungen 90 Tage auf, dann beginnt Google mit dem Löschen.</p>
+<p><strong>Rechtsgrundlage und Übermittlung.</strong> Analyse und Absturzberichte laufen nur mit deiner Einwilligung (Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG). Du kannst sie jederzeit in den Einstellungen der App widerrufen. Die Verarbeitung bis zum Widerruf bleibt rechtmäßig. Google Ireland Limited verarbeitet die Daten in unserem Auftrag. Google kann sie in die USA übermitteln. Google LLC ist nach dem EU-US Data Privacy Framework zertifiziert, die Übermittlung stützt sich daher auf den Angemessenheitsbeschluss der EU (Art. 45 DSGVO). Hilfsweise gelten die Standardvertragsklauseln in Googles Datenverarbeitungsbedingungen (Art. 46 DSGVO). [Entwurf, nach juristischer Prüfung zu bestätigen.]</p>
 <details class="events">
 <summary>Alle 32 Ereignisse, die die App senden kann</summary>
 <p class="events-intro">Die vollständige Liste der Ereignisse, ihrer Parameter und der Größenklassen, wie im Quelltext der App. Sie wird aus demselben Dokument erzeugt, gegen das der Code der App geprüft wird.</p>
@@ -227,7 +230,8 @@
 <section id="orte">
 <h2>Ortsnamen</h2>
 <p>Um eine Fahrt mit dem Ort zu betiteln, an dem sie begann, fragt FitFitr einmal bei Apple Karten nach der ersten Position der Datei. Die Koordinate wird auf etwa 110 Meter gerundet an Apple gesendet, sonst nichts: nicht der übrige Track, nicht die Datei, nicht ihr Name. An Google oder andere geht sie nicht.</p>
-<p>Das geschieht nur bei einer Datei mit GPS-Daten, solange sie in der Detailansicht geöffnet ist. Der Ortsname bleibt nur im Arbeitsspeicher und wird nie in deine Datei geschrieben. Die Analyse erhält ihn nicht.</p>
+<p>Das geschieht automatisch, nur bei einer Datei mit GPS-Daten, solange sie in der Detailansicht geöffnet ist. Der Ortsname bleibt nur im Arbeitsspeicher und wird nie in deine Datei geschrieben. Die Analyse erhält ihn nicht.</p>
+<p><strong>Rechtsgrundlage und deine Wahl.</strong> Grundlage ist unser Interesse, einer Datei einen lesbaren Titel zu geben (Art. 6 Abs. 1 lit. f DSGVO). Die erste Position kann nah an deinem Zuhause liegen, daher kannst du widersprechen (siehe <a href="#rechte">deine Rechte</a>). Einen Schalter dafür hat die App noch nicht. Bis dahin öffne Dateien, während dein Gerät offline ist: Dann erreicht keine Anfrage Apple, und der Titel bleibt ohne Ort. Apple Distribution International Limited bearbeitet die Anfrage nach <a href="https://www.apple.com/legal/privacy/de-ww/">ihrer Datenschutzrichtlinie</a>. Laut Apple sind Übermittlungen aus dem EWR durch Standardvertragsklauseln abgesichert. [Entwurf, nach juristischer Prüfung zu bestätigen.]</p>
 </section>
 
 <section id="strava">
@@ -235,7 +239,8 @@
 <p>Zu Strava wird nichts gesendet, bevor du dich dort angemeldet und auf Zu Strava hochladen getippt hast.</p>
 <ul class="spaced">
 <li><strong>Was Strava erhält.</strong> Die <span class="nb"><code class="ext">.fit</code>-Datei</span>, wie sie beim Tippen auf Hochladen vorliegt, mit allem, was sie enthält: Zeit, GPS-Track, Herzfrequenz, Leistung, Trittfrequenz und Athletendaten, die ein Gerät hineingeschrieben hat. Was du vorher entfernt hast, ist nicht darin. Dazu kommen der Dateiname und ein von dir eingegebener Aktivitätsname oder eine Beschreibung.</li>
-<li><strong>Wer es verarbeitet.</strong> Strava, nach der eigenen Datenschutzerklärung.</li>
+<li><strong>Wer es verarbeitet.</strong> Strava, nach <a href="https://www.strava.com/legal/privacy">der eigenen Datenschutzerklärung</a>. Im EWR ist das Strava Ireland Limited. Strava und FitFitr sind jeweils eigenständig verantwortlich für das, was sie erhalten. Strava kann außerdem Daten über die Nutzung der Schnittstelle durch die App erheben und für eigene Geschäftszwecke verwenden. Laut Strava werden die Daten in den USA gespeichert und durch Standardvertragsklauseln abgesichert.</li>
+<li><strong>Rechtsgrundlage.</strong> FitFitr sendet die Datei, weil du es verlangst (Art. 6 Abs. 1 lit. b DSGVO). Eine Datei kann Gesundheitsdaten wie die Herzfrequenz enthalten. Mit dem Tippen auf Zu Strava hochladen entscheidest du ausdrücklich, sie zu senden (Art. 9 Abs. 2 lit. a DSGVO). [Entwurf, nach juristischer Prüfung zu bestätigen.]</li>
 <li><strong>Anmeldung.</strong> Auf der Seite von Strava. FitFitr sieht dein Passwort nie und fragt nur eine Berechtigung an: Aktivitäten für dich hochzuladen.</li>
 <li><strong>Was auf dem Gerät bleibt.</strong> Das Anmelde-Token von Strava, im iOS-Schlüsselbund, nur auf diesem Gerät.</li>
 <li><strong>Trennen.</strong> Widerruft den Zugriff der App bei Strava und löscht das Token. Die hochgeladene Datei bleibt bei Strava, bis du sie dort löschst.</li>
@@ -248,7 +253,7 @@
 <ul class="spaced">
 <li><strong>Produktinteraktion.</strong> Die oben beschriebenen Ereignisse und die wenigen, die Firebase selbst protokolliert. Für die Analyse.</li>
 <li><strong>Leistungsdaten.</strong> Wie lange das Öffnen einer Datei gedauert hat, als Größenklasse wie schnell oder langsam. Startzeit, Hänger und Energieverbrauch werden nicht erhoben. Für die Analyse.</li>
-<li><strong>Geräte-ID.</strong> Die zufällige Kennung, die Firebase jeder Installation gibt und mit jedem Ereignis sendet. Sie ist nicht mit dir verknüpft, und beim Ausschalten der Analyse wird sie zurückgesetzt. Für die Analyse.</li>
+<li><strong>Geräte-ID.</strong> Die zufällige Kennung, die Firebase jeder Installation gibt und mit jedem Ereignis sendet. Sie ist nicht mit deinem Namen oder einem Konto verknüpft, und beim Ausschalten der Analyse wird sie zurückgesetzt. Für die Analyse.</li>
 <li><strong>Absturzdaten.</strong> Absturzberichte und die Ereignisnamen unmittelbar davor. Damit die App funktioniert.</li>
 <li><strong>Sonstige Diagnosedaten.</strong> Die Geräte- und iOS-Angaben, die ein Absturzbericht enthält. Damit die App funktioniert.</li>
 </ul>
@@ -258,30 +263,45 @@
 <section id="empfaenger" class="stack-lg">
 <h2>Wer was erhält</h2>
 <ul class="recipient-cards">
-<li><strong>Google (Firebase)</strong><span>Nur nach deiner Zustimmung: Ereignisse aus festen Listen, Absturzberichte</span></li>
-<li><strong>Google (Analytics, Website)</strong><span>Nur nachdem du im Banner zustimmst: besuchte Seiten, Herkunftsseite, Browser- und Gerätetyp, ungefährer Standort</span></li>
-<li><strong>Apple (Karten)</strong><span>Wenn eine Datei mit GPS geöffnet ist: eine auf etwa 110 m gerundete Koordinate</span></li>
+<li><strong>Google (Firebase)</strong><span>Nur nach deiner Zustimmung: Ereignisse aus festen Listen, Absturzberichte, zufällige Installationskennungen</span></li>
+<li><strong>Google (Analytics, Website)</strong><span>Nur nachdem du im Banner zustimmst: besuchte Seiten, Herkunftsseite, Browser- und Gerätetyp, Sprache, eine zufällige Cookie-Kennung, IP-Adresse</span></li>
+<li><strong>Apple (Karten)</strong><span>Automatisch, wenn eine Datei mit GPS geöffnet ist: eine auf etwa 110 m gerundete Koordinate</span></li>
 <li><strong>Strava</strong><span>Nur wenn du auf Hochladen tippst: die <span class="nb"><code class="ext">.fit</code>-Datei</span> und der Text, den du eingegeben hast</span></li>
+<li><strong>GitHub (Hosting)</strong><span>Wenn du eine Seite dieser Website öffnest: IP-Adresse und technische Browserdaten</span></li>
+<li><strong>Apple (iCloud Mail)</strong><span>Wenn du uns schreibst: deine Adresse, deine Nachricht und alle Anhänge</span></li>
 </ul>
+<p>Sonst erhält niemand Daten von FitFitr oder dieser Website, und wir verkaufen keine. Jeder Empfänger muss deine Daten mit demselben Schutzniveau behandeln wie diese Erklärung. Ihre eigenen Datenschutzhinweise: <a href="https://policies.google.com/privacy?hl=de">Google</a>, <a href="https://www.apple.com/legal/privacy/de-ww/">Apple</a>, <a href="https://www.strava.com/legal/privacy">Strava</a>, <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub</a>. [Entwurf, nach juristischer Prüfung zu bestätigen.]</p>
 </section>
 
 <section id="website">
 <h2>Diese Website</h2>
 <p>Diese Website lädt keine Schriften, Einbettungen oder Werbung anderer Dienste. Besuche misst sie mit Google Analytics nur, nachdem du im Banner zugestimmt hast, und nicht vorher.</p>
-<p><strong>Nutzungsstatistik (Google Analytics).</strong> Wenn du auf Zustimmen tippst, lädt dein Browser das Messskript von Google und sendet Google die Seiten, die du öffnest, die Seite, von der du kamst, deinen Browser- und Gerätetyp, deine Sprache und einen ungefähren Standort. Google Analytics speichert keine IP-Adressen. Es setzt zwei Cookies, <code>_ga</code> und eines, das mit <code>_ga_</code> beginnt, die Besuche bis zu 2 Jahre voneinander unterscheiden. Werbefunktionen und Google-Signale sind ausgeschaltet. Mit einer <code class="ext">.fit</code>-Datei hat das nichts zu tun: Die Website sieht nie eine.</p>
-<p><strong>Klicks zum App Store.</strong> Wenn du zugestimmt hast, erfasst die Website außerdem, dass du einem Link zum App Store gefolgt bist, als ein Ereignis mit der Stelle des Links (oben auf der Startseite, am Ende oder in einer Anleitung) und der Sprache der Seite. Die Seite im App Store, auf der du landest, gehört Apple. Apple teilt uns ohne Namen mit, wie viele Menschen die Seite der App angesehen und sie nach einem unserer Links geladen haben. Dafür braucht diese Website weder ein Cookie noch ein Banner.</p>
-<p>Wenn du auf Ablehnen tippst oder das Banner ignorierst, wird nichts an Google gesendet und kein Cookie gesetzt. Deine Wahl, das Wort granted oder denied, bleibt im lokalen Speicher deines Browsers. Du kannst sie jederzeit über „Datenschutzeinstellungen“ in der Fußzeile ändern. Ablehnen beendet dort die Messung und löscht die beiden Cookies.</p>
-<p><strong>Speicherdauer:</strong> Google Analytics bewahrt diese Daten 14 Monate auf.</p>
-<p><strong>Rechtsgrundlage und Übermittlung.</strong> Die Statistik wird nur mit deiner Einwilligung gemessen (Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG). Du kannst sie jederzeit über „Datenschutzeinstellungen“ in der Fußzeile widerrufen; das berührt nicht, was vorher gemessen wurde. Google Ireland Limited verarbeitet die Daten in unserem Auftrag. Google kann sie in die USA übermitteln, wo sie durch die Garantien in Googles Datenverarbeitungsbedingungen abgesichert sind (EU-US Data Privacy Framework oder Standardvertragsklauseln). [Entwurf, nach juristischer Prüfung zu bestätigen.]</p>
-<p>Der Hell/Dunkel-Schalter in der oberen Ecke speichert genau eine Sache: deine Wahl, das Wort hell oder dunkel, im lokalen Speicher deines Browsers auf deinem Gerät. Das ist kein Cookie, es wird an niemanden gesendet, und du kannst es entfernen, indem du die Daten dieser Website in deinem Browser löschst. Ohne den Schalter folgt die Seite der Darstellungseinstellung deines Geräts.</p>
+<p><strong>Nutzungsstatistik (Google Analytics).</strong> Wenn du Zustimmen wählst, lädt dein Browser das Messskript von Google und sendet Google die Seiten, die du öffnest, die Seite, von der du kamst, deinen Browser- und Gerätetyp, deine Sprache und eine zufällige Kennung aus einem Cookie. Google erhält außerdem deine IP-Adresse, ermittelt daraus einen ungefähren Standort und verwirft sie: Google Analytics protokolliert und speichert keine IP-Adressen. Es setzt zwei Cookies, <code>_ga</code> und eines, das mit <code>_ga_</code> beginnt, die deinen Browser bis zu 2 Jahre wiedererkennen. Werbefunktionen und Google-Signale sind ausgeschaltet. Mit einer <code class="ext">.fit</code>-Datei hat das nichts zu tun: Die Website sieht nie eine.</p>
+<p><strong>Klicks zum App Store.</strong> Wenn du zugestimmt hast, erfasst die Website außerdem, dass du einem Link zum App Store gefolgt bist, als ein Ereignis mit der Stelle des Links (oben auf der Startseite, am Ende oder in einer Anleitung) und der Sprache der Seite. Die Seite im App Store, auf der du landest, gehört Apple. Apple teilt uns nur Gesamtzahlen mit: wie viele Menschen die Seite der App angesehen und sie nach einem unserer Links geladen haben. Dafür braucht diese Website weder ein Cookie noch ein Banner.</p>
+<p>Wenn du Ablehnen wählst oder das Banner ignorierst, wird nichts an Google gesendet und kein Cookie gesetzt. Deine Wahl, das Wort granted oder denied, bleibt im lokalen Speicher deines Browsers. Du kannst sie jederzeit über „Datenschutzeinstellungen“ in der Fußzeile ändern. Ablehnen beendet dort die Messung und löscht die beiden Cookies.</p>
+<p><strong>Speicherdauer:</strong> Google Analytics bewahrt Daten, die an dein Cookie gebunden sind, 14 Monate auf. Danach bleiben nur zusammengefasste Werte in den Standardberichten.</p>
+<p><strong>Rechtsgrundlage und Übermittlung.</strong> Die Statistik wird nur mit deiner Einwilligung gemessen (Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG). Du kannst sie jederzeit über „Datenschutzeinstellungen“ in der Fußzeile widerrufen. Die Messung bis zum Widerruf bleibt rechtmäßig. Google Ireland Limited verarbeitet die Daten in unserem Auftrag. Google kann sie in die USA übermitteln. Google LLC ist nach dem EU-US Data Privacy Framework zertifiziert, die Übermittlung stützt sich daher auf den Angemessenheitsbeschluss der EU (Art. 45 DSGVO). Hilfsweise gelten die Standardvertragsklauseln in Googles Datenverarbeitungsbedingungen (Art. 46 DSGVO). [Entwurf, nach juristischer Prüfung zu bestätigen.]</p>
+<p>Der Hell/Dunkel-Schalter in der oberen Ecke speichert genau eine Sache: deine Wahl, das Wort light oder dark, im lokalen Speicher deines Browsers auf deinem Gerät. Das ist kein Cookie, es wird an niemanden gesendet, und du kannst es entfernen, indem du die Daten dieser Website in deinem Browser löschst. Ohne den Schalter folgt die Seite der Darstellungseinstellung deines Geräts.</p>
 <p>Die Startseite liest einmalig die Spracheinstellung deines Browsers auf deinem Gerät, um dich auf die englischen oder deutschen Seiten weiterzuleiten. Die Einstellung wird nicht gespeichert und an niemanden gesendet.</p>
-<p><strong>Hosting.</strong> Diese Website wird über GitHub Pages (GitHub, Inc., USA) ausgeliefert. Wenn du eine Seite öffnest, erhält GitHub deine IP-Adresse und die technischen Daten, die dein Browser sendet, und kann sie in Server-Protokollen speichern. Wir erhalten diese Protokolle nicht und setzen dafür kein Cookie. Grundlage ist unser Interesse an einer sicheren Auslieferung der Website (Art. 6 Abs. 1 lit. f DSGVO). [Entwurf, nach juristischer Prüfung zu bestätigen.]</p>
+<p><strong>Hosting.</strong> Diese Website wird über GitHub Pages (GitHub, Inc., USA) ausgeliefert. Wenn du eine Seite öffnest, erhält GitHub deine IP-Adresse und die technischen Daten, die dein Browser sendet. GitHub protokolliert und speichert sie aus Sicherheitsgründen und entscheidet selbst, wie lange. Wir erhalten diese Protokolle nicht und setzen dafür kein Cookie. Grundlage ist unser Interesse an einer sicheren Auslieferung der Website (Art. 6 Abs. 1 lit. f DSGVO). Du kannst widersprechen (siehe <a href="#rechte">deine Rechte</a>). Laut GitHub ist das Unternehmen nach dem EU-US Data Privacy Framework zertifiziert und nutzt sonst Standardvertragsklauseln. [Entwurf, nach juristischer Prüfung zu bestätigen.]</p>
+</section>
+
+<section id="email">
+<h2>Wenn du uns schreibst</h2>
+<p>Schreibst du an <a href="mailto:support@fitfitr.app">support@fitfitr.app</a> oder <a href="mailto:privacy@fitfitr.app">privacy@fitfitr.app</a>, erhalten wir deine Adresse, deine Nachricht und alles, was du anhängst. Wir nutzen das nur, um dir zu antworten. Die Mails liegen bei iCloud Mail, einem Dienst von Apple, nach <a href="https://www.apple.com/legal/privacy/de-ww/">Apples Datenschutzrichtlinie</a>.</p>
+<p>Eine angehängte <span class="nb"><code class="ext">.fit</code>-Datei</span> kann deinen GPS-Track und Gesundheitsdaten wie die Herzfrequenz enthalten. Ob du sie anhängst, entscheidest du. Lässt sie sich in FitFitr öffnen, kannst du vorher GPS-Daten und dein Athletenprofil entfernen.</p>
+<p><strong>Rechtsgrundlage.</strong> Grundlage ist unser Interesse, dir zu antworten (Art. 6 Abs. 1 lit. f DSGVO). Mit einer angehängten Datei willigst du ausdrücklich ein, dass wir darin enthaltene Gesundheitsdaten dafür nutzen (Art. 9 Abs. 2 lit. a DSGVO). Das kannst du jederzeit widerrufen.</p>
+<p><strong>Speicherdauer:</strong> Angehängte Dateien löschen wir, sobald deine Frage geklärt ist, deine Nachrichten spätestens 12 Monate nach der letzten, sofern uns kein Gesetz zu längerer Aufbewahrung verpflichtet. [Entwurf, nach juristischer Prüfung zu bestätigen.]</p>
 </section>
 
 <section id="rechte">
 <h2>Deine Entscheidungen und Rechte</h2>
-<p>Analyse und Absturzberichte kannst du in den Einstellungen der App jederzeit ausschalten. Das beendet die Erhebung und löscht, was auf deinem Gerät noch auf das Senden wartete.</p>
-<p>Nach der DSGVO hast du das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch sowie das Recht auf Beschwerde bei einer Aufsichtsbehörde. Für uns ist das der Landesbeauftragte für den Datenschutz und die Informationsfreiheit Baden-Württemberg. Schreib an <a href="mailto:privacy@fitfitr.app">privacy@fitfitr.app</a>. FitFitr hat kein Konto, und Analyse-Ereignisse sind keinem Namen zugeordnet, daher gibt es bei uns meist nichts, was sich über dich als Person nachschlagen ließe. [Entwurf, nach juristischer Prüfung zu bestätigen.]</p>
+<p>Analyse und Absturzberichte kannst du in den Einstellungen der App jederzeit ausschalten. Damit widerrufst du deine Einwilligung: Die Erhebung endet, was auf deinem Gerät noch auf das Senden wartete, wird gelöscht, und die Installationskennung wird zurückgesetzt. Die Verarbeitung bis dahin bleibt rechtmäßig. Auf dieser Website nutzt du dafür „Datenschutzeinstellungen“ in der Fußzeile.</p>
+<p><strong>Dein Widerspruchsrecht.</strong> Wo wir uns auf unser eigenes Interesse stützen (Art. 6 Abs. 1 lit. f DSGVO), kannst du jederzeit aus Gründen widersprechen, die sich aus deiner besonderen Situation ergeben (Art. 21 DSGVO). Das betrifft die Ortssuche, das Hosting dieser Website und den Umgang mit deinen Mails. Schreib an <a href="mailto:privacy@fitfitr.app">privacy@fitfitr.app</a>.</p>
+<p><strong>Deine weiteren Rechte.</strong> Nach der DSGVO hast du außerdem das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung und Datenübertragbarkeit. Schreib an <a href="mailto:privacy@fitfitr.app">privacy@fitfitr.app</a>. FitFitr hat kein Konto, und Analyse-Ereignisse tragen nur eine zufällige Kennung, daher können wir Daten meist nicht über deine Person finden.</p>
+<p><strong>Deine Daten löschen.</strong> Löschst du die App, verschwinden die Dateien, die sie auf deinem Gerät hält. Trenne vorher Strava, damit auch das Anmelde-Token gelöscht wird. Beim Ausschalten der Analyse wird die Kennung zurückgesetzt, spätere Ereignisse lassen sich also nicht mit früheren verknüpfen, und Google löscht die früheren Daten nach den oben genannten Fristen. Eine hochgeladene Aktivität löschst du bei Strava. Damit wir deine Mails löschen, schreib an <a href="mailto:privacy@fitfitr.app">privacy@fitfitr.app</a>.</p>
+<p><strong>Beschwerde.</strong> Du kannst dich bei einer Datenschutz-Aufsichtsbehörde beschweren, insbesondere dort, wo du lebst oder arbeitest. Zuständig für FitFitr ist der Landesbeauftragte für den Datenschutz und die Informationsfreiheit Baden-Württemberg (LfDI BW).</p>
+<p><strong>Was du bereitstellen musst.</strong> Nichts davon ist gesetzlich oder vertraglich vorgeschrieben. FitFitr funktioniert ohne Analyse und Absturzberichte vollständig, diese Website ohne Statistik ebenso. Nur die Hosting-Daten sind nötig, um eine Seite auszuliefern. Wir treffen keine automatisierten Entscheidungen über dich und erstellen kein Profil von dir. [Entwurf, nach juristischer Prüfung zu bestätigen.]</p>
 </section>
 
 <section id="aenderungen">

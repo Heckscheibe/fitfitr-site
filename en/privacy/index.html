@@ -39,15 +39,15 @@
 <main id="main" class="page">
 <div class="page-head">
 <h1>Privacy policy</h1>
-<p class="lead">Applies to the FitFitr app for iPhone and iPad and to this website. Last updated 20 October 2026.</p>
+<p class="lead">Applies to the FitFitr app for iPhone and iPad and to this website. Last updated 30 October 2026.</p>
 </div>
 
 <div class="card">
 <h2>The short version</h2>
 <ul>
 <li>Your <code class="ext">.fit</code> files are opened and edited on your device. FitFitr has no account and no server of its own.</li>
-<li>Nothing leaves your device unless you ask it to: you upload to Strava or share a file yourself.</li>
-<li>Analytics and crash reports are off until you switch them on, and they never contain file contents, file names, places or times.</li>
+<li>Your file leaves your device only when you share it or upload it to Strava. One exception: when you open a file with GPS, FitFitr sends one rounded coordinate to Apple to name the town.</li>
+<li>Analytics and crash reports are off until you switch them on. They never contain your GPS track, your sensor readings, file names or activity times.</li>
 <li>You can switch them off again at any time.</li>
 </ul>
 </div>
@@ -65,6 +65,7 @@
 <a href="#label">The App Store privacy label</a>
 <a href="#recipients">Who receives what</a>
 <a href="#website">This website</a>
+<a href="#email">If you write to us</a>
 <a href="#rights">Your choices and rights</a>
 <a href="#changes">Changes to this policy</a>
 </nav>
@@ -80,13 +81,14 @@
 <section id="device">
 <h2>What stays on your device</h2>
 <p>FitFitr reads a <code class="ext">.fit</code> file, shows you the edit, and writes the result where you tell it to. All of that happens on your iPhone or iPad. There is no account to create and no server of FitFitr's own that your file could be sent to.</p>
-<p>The only parties that can ever receive anything are you, your device, and the services you choose to use from inside the app, described below.</p>
+<p>Your file goes only where you send it. Two other things can leave your device, both described below: analytics and crash reports, if you agree, and one rounded coordinate for the place name.</p>
 </section>
 
 <section id="analytics" class="stack-lg">
 <h2>Analytics and crash reports</h2>
 <p>Both are off on a fresh install and stay off until you turn them on. There is no consent wall when you first open the app, and the analytics and crash-reporting software does not start until you agree.</p>
 <p>With your consent, FitFitr sends product events to Google Analytics for Firebase and crash reports to Firebase Crashlytics, both operated by Google. Every value in an event is a name from a fixed list, a yes or no, or a band such as small or large. Exact counts are never sent.</p>
+<p>The data carries no name, but it is not anonymous. Every event carries a random ID that Firebase gives this installation, so events from one installation can be linked to each other. Crash reports carry random installation IDs of their own. None of these IDs contains your name or an advertising identifier. Google Analytics uses the IP address of the connection to work out the country, and does not store the address.</p>
 <div class="panel">
 <h3>Never collected</h3>
 <ul>
@@ -100,8 +102,9 @@
 </ul>
 </div>
 <p>Firebase also logs a few events of its own: the first launch, a new session, time in the app, and app or iOS updates. They carry the app and iOS version and the device model, language and country, and nothing from a file.</p>
-<p>A crash report includes the sequence of event names that came just before the crash, so the problem can be reproduced. It contains the same fixed-list values and nothing else.</p>
-<p><strong>Retention:</strong> Google Analytics keeps this data for 14 months.</p>
+<p>A crash report includes the sequence of event names that came just before the crash, so the problem can be reproduced. That sequence contains the same fixed-list values and nothing else.</p>
+<p><strong>Retention:</strong> Google Analytics keeps event data linked to the installation ID for 14 months. After that, only aggregated totals remain in standard reports. Crashlytics keeps crash reports and their IDs for 90 days, then Google starts deleting them.</p>
+<p><strong>Legal basis and transfer.</strong> Analytics and crash reports run only with your consent (Art. 6(1)(a) GDPR and § 25(1) TDDDG). You can withdraw it at any time in the app's Settings. Processing before you withdraw stays lawful. Google Ireland Limited processes the data on our behalf. Google may transfer it to the United States. Google LLC is certified under the EU-US Data Privacy Framework, so this transfer rests on the EU's adequacy decision (Art. 45 GDPR). Standard contractual clauses in Google's data processing terms apply as a fallback (Art. 46 GDPR). [Draft, to be confirmed in legal review.]</p>
 <details class="events">
 <summary>Every event the app can send, all 32 of them</summary>
 <p class="events-intro">The full list of events, their parameters and the bands they use, as in the app's source. Generated from the same document the app's code is checked against.</p>
@@ -227,7 +230,8 @@
 <section id="places">
 <h2>Place names</h2>
 <p>To title a ride with the town it started in, FitFitr asks Apple Maps once for the file's first position fix. The coordinate is rounded to about 110 metres and sent to Apple, and nothing else goes with it: not the rest of the track, not the file, not its name. It is not sent to Google or to anyone else.</p>
-<p>This happens only for a file that has GPS data, while it is open on the detail screen. The town name is kept in memory while the app runs and is never written into your file. Analytics does not receive it.</p>
+<p>This happens automatically, only for a file that has GPS data, while it is open on the detail screen. The town name is kept in memory while the app runs and is never written into your file. Analytics does not receive it.</p>
+<p><strong>Legal basis and your choice.</strong> The basis is our interest in giving a file a readable title (Art. 6(1)(f) GDPR). The first position fix can be close to your home, so you can object (see <a href="#rights">your rights</a>). The app has no switch for this yet. Until it has one, open files while your device is offline: no lookup reaches Apple, and the title goes without a place. Apple Distribution International Limited handles the request under <a href="https://www.apple.com/legal/privacy/en-ww/">its privacy policy</a>. Apple says transfers out of the EEA are covered by standard contractual clauses. [Draft, to be confirmed in legal review.]</p>
 </section>
 
 <section id="strava">
@@ -235,7 +239,8 @@
 <p>Nothing is sent to Strava until you have signed in there and tapped Upload to Strava.</p>
 <ul class="spaced">
 <li><strong>What Strava receives.</strong> The <code class="ext">.fit</code> file as it stands when you tap upload, with whatever it contains: time, GPS track, heart rate, power, cadence, and athlete data a device wrote into it. Anything you removed first is not in it. The file's name and any activity name or description you entered go with it.</li>
-<li><strong>Who handles it.</strong> Strava, under its own privacy policy.</li>
+<li><strong>Who handles it.</strong> Strava, under <a href="https://www.strava.com/legal/privacy">its own privacy policy</a>. In the EEA that is Strava Ireland Limited. Strava and FitFitr are separate controllers of what each of them receives. Strava may also collect data about the app's use of its API and use it for its own business purposes. Strava says it stores data in the United States and uses standard contractual clauses for the transfer.</li>
+<li><strong>Legal basis.</strong> FitFitr sends the file because you asked it to (Art. 6(1)(b) GDPR). A file can hold health data such as heart rate. Tapping Upload to Strava is your explicit choice to send it (Art. 9(2)(a) GDPR). [Draft, to be confirmed in legal review.]</li>
 <li><strong>Signing in.</strong> On Strava's own page. FitFitr never sees your password and asks for one permission only: to upload activities for you.</li>
 <li><strong>What stays on your device.</strong> Strava's sign-in token, in the iOS Keychain, on this device only.</li>
 <li><strong>Disconnecting.</strong> Revokes the app's access at Strava and deletes the token. The file you uploaded stays on Strava until you delete it there.</li>
@@ -248,7 +253,7 @@
 <ul class="spaced">
 <li><strong>Product interaction.</strong> The events described above, and the few Firebase logs on its own. Used for analytics.</li>
 <li><strong>Performance data.</strong> How long opening a file took, as a band such as fast or slow. Launch time, hangs and energy use are not collected. Used for analytics.</li>
-<li><strong>Device ID.</strong> The random ID Firebase gives each installation and sends with every event. It is not tied to you, and turning analytics off resets it. Used for analytics.</li>
+<li><strong>Device ID.</strong> The random ID Firebase gives each installation and sends with every event. It is not tied to your name or to an account, and turning analytics off resets it. Used for analytics.</li>
 <li><strong>Crash data.</strong> Crash reports and the event names that came just before. Used to keep the app working.</li>
 <li><strong>Other diagnostic data.</strong> The device and iOS information a crash report carries. Used to keep the app working.</li>
 </ul>
@@ -263,32 +268,47 @@
 <tr role="row"><th scope="col" role="columnheader">Recipient</th><th scope="col" role="columnheader">When</th><th scope="col" role="columnheader">What</th></tr>
 </thead>
 <tbody role="rowgroup">
-<tr role="row"><th scope="row" role="rowheader">Google (Firebase)</th><td role="cell" data-label="When">Only after you agree</td><td role="cell" data-label="What">Fixed-list events, crash reports</td></tr>
-<tr role="row"><th scope="row" role="rowheader">Google (Analytics, website)</th><td role="cell" data-label="When">Only after you accept the banner</td><td role="cell" data-label="What">Pages visited, referrer, browser and device type, approximate location</td></tr>
-<tr role="row"><th scope="row" role="rowheader">Apple (Maps)</th><td role="cell" data-label="When">When a file with GPS is open</td><td role="cell" data-label="What">One coordinate, rounded to about 110 m</td></tr>
+<tr role="row"><th scope="row" role="rowheader">Google (Firebase)</th><td role="cell" data-label="When">Only after you agree</td><td role="cell" data-label="What">Fixed-list events, crash reports, random installation IDs</td></tr>
+<tr role="row"><th scope="row" role="rowheader">Google (Analytics, website)</th><td role="cell" data-label="When">Only after you accept the banner</td><td role="cell" data-label="What">Pages visited, referrer, browser and device type, language, a random cookie ID, IP address</td></tr>
+<tr role="row"><th scope="row" role="rowheader">Apple (Maps)</th><td role="cell" data-label="When">Automatically, when a file with GPS is open</td><td role="cell" data-label="What">One coordinate, rounded to about 110 m</td></tr>
 <tr role="row"><th scope="row" role="rowheader">Strava</th><td role="cell" data-label="When">Only when you tap upload</td><td role="cell" data-label="What">The <code class="ext">.fit</code> file and the text you entered</td></tr>
+<tr role="row"><th scope="row" role="rowheader">GitHub (hosting)</th><td role="cell" data-label="When">When you open a page of this website</td><td role="cell" data-label="What">IP address and technical browser data</td></tr>
+<tr role="row"><th scope="row" role="rowheader">Apple (iCloud Mail)</th><td role="cell" data-label="When">When you email us</td><td role="cell" data-label="What">Your address, your message and any attachment</td></tr>
 </tbody>
 </table>
 </div>
+<p>Nobody else receives data from FitFitr or this website, and we sell none. Each recipient has to give your data the same level of protection as this policy. Their own policies: <a href="https://policies.google.com/privacy">Google</a>, <a href="https://www.apple.com/legal/privacy/en-ww/">Apple</a>, <a href="https://www.strava.com/legal/privacy">Strava</a>, <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub</a>. [Draft, to be confirmed in legal review.]</p>
 </section>
 
 <section id="website">
 <h2>This website</h2>
 <p>This website loads no fonts, embeds or advertising from other services. It measures visits with Google Analytics only after you agree in the banner, and not before.</p>
-<p><strong>Usage statistics (Google Analytics).</strong> If you press Accept, your browser loads Google's measurement script and sends Google the pages you open, the page you came from, your browser and device type, your language and an approximate location. Google Analytics does not store IP addresses. It sets two cookies, <code>_ga</code> and one beginning <code>_ga_</code>, that tell visits apart for up to 2 years. Advertising features and Google signals are switched off. Nothing about a <code class="ext">.fit</code> file is involved: the website never sees one.</p>
-<p><strong>App Store clicks.</strong> If you agreed, the website also records that you followed a link to the App Store, as one event with the place of the link (the top of the start page, its end or a guide) and the page language. The App Store page you land on is Apple's. Apple tells us, without naming anyone, how many people viewed the app's page and downloaded it after following each of our links. That count needs no cookie or banner on this website.</p>
+<p><strong>Usage statistics (Google Analytics).</strong> If you press Accept, your browser loads Google's measurement script and sends Google the pages you open, the page you came from, your browser and device type, your language and a random ID from a cookie. Google also receives your IP address, uses it to work out an approximate location, then discards it: Google Analytics does not log or store IP addresses. It sets two cookies, <code>_ga</code> and one beginning <code>_ga_</code>, that recognise your browser for up to 2 years. Advertising features and Google signals are switched off. Nothing about a <code class="ext">.fit</code> file is involved: the website never sees one.</p>
+<p><strong>App Store clicks.</strong> If you agreed, the website also records that you followed a link to the App Store, as one event with the place of the link (the top of the start page, its end or a guide) and the page language. The App Store page you land on is Apple's. Apple gives us only totals: how many people viewed the app's page and downloaded it after following each of our links. That count needs no cookie or banner on this website.</p>
 <p>If you press Decline, or ignore the banner, nothing is sent to Google and no cookie is set. Your choice, the word granted or denied, is kept in your browser's local storage. Change it at any time with "Privacy settings" in the footer. Declining there stops measurement and deletes the two cookies.</p>
-<p><strong>Retention:</strong> Google Analytics keeps this data for 14 months.</p>
-<p><strong>Legal basis and transfer.</strong> The statistics are measured only with your consent (Art. 6(1)(a) GDPR and § 25(1) TDDDG). You can withdraw it at any time with "Privacy settings" in the footer; this does not affect what was measured before. Google Ireland Limited processes the data on our behalf. Google may transfer it to the United States, where it is covered by the safeguards in Google's data processing terms (EU-US Data Privacy Framework or standard contractual clauses). [Draft, to be confirmed in legal review.]</p>
+<p><strong>Retention:</strong> Google Analytics keeps data linked to your cookie for 14 months. After that, only aggregated totals remain in standard reports.</p>
+<p><strong>Legal basis and transfer.</strong> The statistics are measured only with your consent (Art. 6(1)(a) GDPR and § 25(1) TDDDG). You can withdraw it at any time with "Privacy settings" in the footer. Measurement before you withdraw stays lawful. Google Ireland Limited processes the data on our behalf. Google may transfer it to the United States. Google LLC is certified under the EU-US Data Privacy Framework, so this transfer rests on the EU's adequacy decision (Art. 45 GDPR). Standard contractual clauses in Google's data processing terms apply as a fallback (Art. 46 GDPR). [Draft, to be confirmed in legal review.]</p>
 <p>The light/dark switch in the top corner stores one thing: your choice, the word light or dark, in your browser's local storage on your device. It is not a cookie, it is never sent to anyone, and you can remove it by clearing this site's data in your browser. Without the switch, the page follows your device's appearance setting.</p>
 <p>The start page reads your browser's language setting on your device once, to send you to the English or German pages. The setting is not stored and not sent to anyone.</p>
-<p><strong>Hosting.</strong> This website is served by GitHub Pages (GitHub, Inc., USA). When you open a page, GitHub receives your IP address and the technical data your browser sends, and may keep it in server logs. We do not receive these logs and set no cookie for this. The basis is our interest in delivering the website securely (Art. 6(1)(f) GDPR). [Draft, to be confirmed in legal review.]</p>
+<p><strong>Hosting.</strong> This website is served by GitHub Pages (GitHub, Inc., USA). When you open a page, GitHub receives your IP address and the technical data your browser sends. GitHub logs and stores them for security reasons and decides how long it keeps them. We do not receive these logs and set no cookie for this. The basis is our interest in delivering the website securely (Art. 6(1)(f) GDPR). You can object (see <a href="#rights">your rights</a>). GitHub says it is certified under the EU-US Data Privacy Framework and otherwise uses standard contractual clauses. [Draft, to be confirmed in legal review.]</p>
+</section>
+
+<section id="email">
+<h2>If you write to us</h2>
+<p>When you email <a href="mailto:support@fitfitr.app">support@fitfitr.app</a> or <a href="mailto:privacy@fitfitr.app">privacy@fitfitr.app</a>, we receive your address, your message and anything you attach. We use them only to answer you. The mail is stored in iCloud Mail, an Apple service, under <a href="https://www.apple.com/legal/privacy/en-ww/">Apple's privacy policy</a>.</p>
+<p>A <code class="ext">.fit</code> file you attach can contain your GPS track and health data such as heart rate. Attaching one is your choice. If FitFitr can open the file, you can remove GPS data and your athlete profile before you send it.</p>
+<p><strong>Legal basis.</strong> The basis is our interest in answering you (Art. 6(1)(f) GDPR). By attaching a file you explicitly agree that we use any health data in it for that purpose (Art. 9(2)(a) GDPR). You can withdraw this at any time.</p>
+<p><strong>Retention:</strong> We delete attached files once your question is settled, and your messages at the latest 12 months after the last one, unless the law requires us to keep them longer. [Draft, to be confirmed in legal review.]</p>
 </section>
 
 <section id="rights">
 <h2>Your choices and rights</h2>
-<p>You can turn analytics and crash reports off in the app's Settings at any time. Turning them off stops collection and deletes whatever was queued on your device but not yet sent.</p>
-<p>Under the GDPR you have the right to access, rectification, erasure, restriction of processing, data portability and objection, and the right to complain to a supervisory authority. For us that is the Landesbeauftragte für den Datenschutz und die Informationsfreiheit Baden-Württemberg. Write to <a href="mailto:privacy@fitfitr.app">privacy@fitfitr.app</a>. FitFitr has no account, and analytics events are not tied to a name, so there is usually nothing on our side that can be looked up by who you are. [Draft, to be confirmed in legal review.]</p>
+<p>You can turn analytics and crash reports off in the app's Settings at any time. That withdraws your consent: it stops collection, deletes whatever was queued on your device but not yet sent, and resets the installation ID. Processing before that stays lawful. On this website, use "Privacy settings" in the footer.</p>
+<p><strong>Your right to object.</strong> Where we rely on our own interest (Art. 6(1)(f) GDPR), you can object at any time for reasons arising from your particular situation (Art. 21 GDPR). This covers the place-name lookup, the hosting of this website and our handling of your emails. Write to <a href="mailto:privacy@fitfitr.app">privacy@fitfitr.app</a>.</p>
+<p><strong>Your other rights.</strong> Under the GDPR you also have the right to access, rectification, erasure, restriction of processing and data portability. Write to <a href="mailto:privacy@fitfitr.app">privacy@fitfitr.app</a>. FitFitr has no account, and analytics events carry only a random ID, so we usually cannot find data by who you are.</p>
+<p><strong>Deleting your data.</strong> Deleting the app removes the files it keeps on your device. Disconnect Strava first, so that the sign-in token goes too. Turning analytics off resets the ID, so later events cannot be linked to earlier ones, and Google deletes the earlier data after the periods above. Delete an uploaded activity on Strava. To have your emails deleted, write to <a href="mailto:privacy@fitfitr.app">privacy@fitfitr.app</a>.</p>
+<p><strong>Complaints.</strong> You can complain to a data protection authority, in particular where you live or work. The authority for FitFitr is the State Commissioner for Data Protection and Freedom of Information of Baden-Württemberg (LfDI BW).</p>
+<p><strong>What you have to provide.</strong> Nothing here is required by law or by a contract. FitFitr works in full without analytics and crash reports, and this website works without statistics. Only the hosting data is needed to deliver a page. We make no automated decisions about you, and we do not profile you. [Draft, to be confirmed in legal review.]</p>
 </section>
 
 <section id="changes">

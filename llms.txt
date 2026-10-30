@@ -12,7 +12,7 @@ What you can do with a file:
 - Change the sport or the device information, and strip fields you do not want to share.
 - Share the edited file to Files, through the share sheet, or straight to Strava.
 
-Files are edited on the device. Analytics and crash reports in the app are off until the user turns them on, and they never contain file contents, file names, places or times.
+Files are edited on the device. Analytics and crash reports in the app are off until the user turns them on, and they never contain the GPS track, sensor readings, file names or activity times. When a file with GPS is open, one rounded coordinate goes to Apple to name the town.
 
 ## Guides
 

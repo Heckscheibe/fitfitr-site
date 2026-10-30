@@ -18,7 +18,7 @@
   var de = document.documentElement.lang === 'de';
   var T = de ? {
     label: 'Statistik',
-    text: 'Darf diese Website anonyme Nutzungsstatistik mit Google Analytics erfassen? Ohne deine Zustimmung wird nichts an Google gesendet.',
+    text: 'Darf diese Website Besuche mit Google Analytics messen? Dabei werden Cookies gesetzt, die deinen Browser bis zu 2 Jahre wiedererkennen, und Google kann die Daten in den USA verarbeiten. Ohne deine Zustimmung wird nichts an Google gesendet.',
     more: 'Datenschutzerklärung',
     href: '/de/datenschutz/#website',
     accept: 'Zustimmen',
@@ -26,7 +26,7 @@
     settings: 'Datenschutzeinstellungen'
   } : {
     label: 'Statistics',
-    text: 'May this website collect anonymous usage statistics with Google Analytics? Nothing is sent to Google unless you agree.',
+    text: 'May this website measure visits with Google Analytics? It sets cookies that recognise your browser for up to 2 years, and Google may process the data in the USA. Nothing is sent to Google unless you agree.',
     more: 'Privacy policy',
     href: '/en/privacy/#website',
     accept: 'Accept',
@@ -54,11 +54,11 @@
   var loaded = false;
 
   function load() {
+    window['ga-disable-' + MEASUREMENT_ID] = false;
     if (loaded) {
       return;
     }
     loaded = true;
-    window['ga-disable-' + MEASUREMENT_ID] = false;
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () { window.dataLayer.push(arguments); };
     window.gtag('consent', 'default', {

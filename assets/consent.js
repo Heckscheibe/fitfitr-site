@@ -17,16 +17,16 @@
 
   var de = document.documentElement.lang === 'de';
   var T = de ? {
-    label: 'Statistik',
-    text: 'Darf diese Website Besuche mit Google Analytics messen? Dabei werden Cookies gesetzt, die deinen Browser bis zu 2 Jahre wiedererkennen, und Google kann die Daten in den USA verarbeiten. Ohne deine Zustimmung wird nichts an Google gesendet.',
+    label: 'Cookies',
+    text: 'Diese Website verwendet Cookies, um Besuche zu messen. Sie werden nur gesetzt, wenn du zustimmst.',
     more: 'Datenschutzerklärung',
     href: '/de/datenschutz/#website',
     accept: 'Zustimmen',
     decline: 'Ablehnen',
     settings: 'Datenschutzeinstellungen'
   } : {
-    label: 'Statistics',
-    text: 'May this website measure visits with Google Analytics? It sets cookies that recognise your browser for up to 2 years, and Google may process the data in the USA. Nothing is sent to Google unless you agree.',
+    label: 'Cookies',
+    text: 'This website uses cookies to measure visits. They are only set if you accept.',
     more: 'Privacy policy',
     href: '/en/privacy/#website',
     accept: 'Accept',

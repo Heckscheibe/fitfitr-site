@@ -2,8 +2,8 @@
 
 The public website for [FitFitr](https://fitfitr.app), an iOS app for editing `.fit` activity files.
 It is a small static site served by GitHub Pages from `main`, folder `/`, at `https://fitfitr.app`.
-English and German, plain HTML and one CSS file, no build step, no frameworks, no cookies, no analytics
-and no requests to any other host.
+English and German, plain HTML and one CSS file, no build step, no frameworks. No cookies and no requests to any other host until a visitor accepts the analytics
+banner (`assets/consent.js`, Google Analytics for Firebase).
 
 This issue (#318 in the app repository) ships the privacy policy, the support page and a minimal landing
 page. The full landing page and the how-to guides follow in #812.
@@ -16,6 +16,7 @@ page. The full landing page and the how-to guides follow in #812.
 | Landing | `/en/` | `/de/` |
 | Privacy policy | `/en/privacy/` | `/de/datenschutz/` |
 | Support | `/en/support/` | `/de/support/` |
+| Legal notice | `/en/legal-notice/` | `/de/impressum/` |
 | Not found | `/404.html` | (bilingual) |
 | Guides, reserved for #812 | `/en/guides/` | `/de/anleitungen/` |
 
@@ -35,10 +36,13 @@ index.html, 404.html        language redirect with chooser fallback, bilingual n
 en/, de/                    one folder per language
 assets/site.css             all styling, light and dark token sets as CSS custom properties
 assets/theme.js             light/dark switch, loaded synchronously in <head>
+assets/consent.js           consent banner and opt-in Google Analytics; inert while MEASUREMENT_ID is the placeholder
+robots.txt, sitemap.xml, llms.txt   crawler rules, the page list with hreflang, and a plain summary for AI assistants
 assets/lang-redirect.js     language redirect of the start page, loaded only by index.html
 assets/icon.png             app icon, 512 px
 scripts/check.py            link, anchor, hreflang and external-resource checks
 scripts/render_events.py    renders the event tables of the privacy policy
+scripts/set_policy_date.py  sets the date at the top of both privacy pages
 CNAME, .nojekyll            custom domain, no Jekyll processing
 ```
 
@@ -92,12 +96,11 @@ and for the guides in #812.
 These are deliberately left in square brackets. They are unresolved decisions, not typos.
 
 The responsible party (Nicolas Hiller and his postal address) and the policy date (12 October 2026) are
-filled in. Update the date whenever the policy text changes.
+filled in. When the policy text changes, run `python3 scripts/set_policy_date.py` as the last step
+before merging to `main`. The site has no build step, so the date cannot follow a deploy by itself.
 
 - The hosting sentence in "This website" (GitHub Pages and server logs), pending legal review.
 - The rights paragraph in "Your choices and rights", pending legal review.
-- The German footer has an HTML comment where an Impressum link would go. It is omitted until it is
-  decided whether an imprint is required.
 - The landing page shows a plain "Coming soon to the App Store" label where Apple's official badge
   and the store URL go once the app is listed (see the `TODO` comment in `en/index.html` and
   `de/index.html`).

@@ -1,0 +1,40 @@
+# FitFitr
+
+> FitFitr is an app for iPhone and iPad for editing individual `.fit` activity files. Open a file from the share sheet, Files or AirDrop, edit it, then share it where your training lives: Files, the share sheet or Strava. It is an editor, not a fitness tracker: it does not record activities, sync workouts or keep a training log.
+
+FitFitr is the step before Strava, Garmin Connect or any other service that takes a `.fit` file. It is an independent app, not affiliated with, endorsed by or sponsored by Strava or Garmin. The app is not yet listed on the App Store.
+
+What you can do with a file:
+
+- Remove or replace spikes from a failing heart rate, cadence or power sensor.
+- Cut out a stretch you did not mean to record, such as a café stop, the walk to a restaurant, or the dead start and end of an activity. Distance, time and averages are recalculated.
+- Merge in missing data from a second file, for example the time and GPS track a friend recorded when your head unit died.
+- Change the sport or the device information, and strip fields you do not want to share.
+- Share the edited file to Files, through the share sheet, or straight to Strava.
+
+Files are edited on the device. Analytics and crash reports in the app are off until the user turns them on, and they never contain the GPS track, sensor readings, file names or activity times. When a file with GPS is open, one rounded coordinate goes to Apple to name the town.
+
+## Guides
+
+- [Remove spikes](https://fitfitr.app/en/guides/remove-spikes/): A strap, a cadence sensor or a power meter reported something that cannot be true. Find those readings on the chart, then remove them or replace them.
+- [Cut a stop](https://fitfitr.app/en/guides/cut-a-stop/): The recording kept running while you stood still. Cut that stretch out, or the dead start and end of an activity.
+- [Merge a friend's file](https://fitfitr.app/en/guides/merge-a-friends-file/): Your head unit or a sensor died partway through the ride. Someone who rode with you recorded it too. Take the missing parts from their file.
+- [Correct sport and device](https://fitfitr.app/en/guides/change-sport-and-device/): The file says something that is not true. Correct what it says before you share it.
+
+In German:
+
+- [Ausreißer entfernen](https://fitfitr.app/de/anleitungen/ausreisser-entfernen/)
+- [Pause herausschneiden](https://fitfitr.app/de/anleitungen/pause-herausschneiden/)
+- [Datei eines Freundes übernehmen](https://fitfitr.app/de/anleitungen/datei-kombinieren/)
+- [Sportart und Gerät korrigieren](https://fitfitr.app/de/anleitungen/sportart-und-geraet-aendern/)
+
+## Pages
+
+- [Home (English)](https://fitfitr.app/en/): what FitFitr does
+- [Startseite (Deutsch)](https://fitfitr.app/de/): was FitFitr kann
+- [Support (English)](https://fitfitr.app/en/support/): contact and answers to common questions
+- [Support (Deutsch)](https://fitfitr.app/de/support/): Kontakt und Antworten auf häufige Fragen
+- [Privacy policy](https://fitfitr.app/en/privacy/): every event the app can send, what stays on the device, who receives what
+- [Datenschutzerklärung](https://fitfitr.app/de/datenschutz/): dasselbe auf Deutsch
+- [Legal notice](https://fitfitr.app/en/legal-notice/): who provides FitFitr
+- [Impressum](https://fitfitr.app/de/impressum/): dasselbe auf Deutsch

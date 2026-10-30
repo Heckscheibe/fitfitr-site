@@ -96,4 +96,16 @@
 <xhtml:link rel="alternate" hreflang="de" href="https://fitfitr.app/de/anleitungen/sportart-und-geraet-aendern/"/>
 <xhtml:link rel="alternate" hreflang="x-default" href="https://fitfitr.app/en/guides/change-sport-and-device/"/>
 </url>
+<url>
+<loc>https://fitfitr.app/en/legal-notice/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://fitfitr.app/en/legal-notice/"/>
+<xhtml:link rel="alternate" hreflang="de" href="https://fitfitr.app/de/impressum/"/>
+<xhtml:link rel="alternate" hreflang="x-default" href="https://fitfitr.app/en/legal-notice/"/>
+</url>
+<url>
+<loc>https://fitfitr.app/de/impressum/</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://fitfitr.app/en/legal-notice/"/>
+<xhtml:link rel="alternate" hreflang="de" href="https://fitfitr.app/de/impressum/"/>
+<xhtml:link rel="alternate" hreflang="x-default" href="https://fitfitr.app/en/legal-notice/"/>
+</url>
 </urlset>

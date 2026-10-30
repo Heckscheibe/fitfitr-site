@@ -36,3 +36,5 @@ In German:
 - [Support (Deutsch)](https://fitfitr.app/de/support/): Kontakt und Antworten auf häufige Fragen
 - [Privacy policy](https://fitfitr.app/en/privacy/): every event the app can send, what stays on the device, who receives what
 - [Datenschutzerklärung](https://fitfitr.app/de/datenschutz/): dasselbe auf Deutsch
+- [Legal notice](https://fitfitr.app/en/legal-notice/): who provides FitFitr
+- [Impressum](https://fitfitr.app/de/impressum/): dasselbe auf Deutsch

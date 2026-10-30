@@ -46,7 +46,7 @@
 <h2>Kurzfassung</h2>
 <ul>
 <li>Deine <span class="nb"><code class="ext">.fit</code>-Dateien</span> werden auf deinem Gerät geöffnet und bearbeitet. FitFitr hat kein Konto und keinen eigenen Server.</li>
-<li>Deine Datei verlässt dein Gerät nur, wenn du sie teilst oder zu Strava hochlädst. Eine Ausnahme: Öffnest du eine Datei mit GPS, sendet FitFitr eine gerundete Koordinate an Apple, um den Ort zu benennen.</li>
+<li>Deine Datei verlässt dein Gerät nur, wenn du sie teilst oder zu Strava hochlädst. Öffnest du eine Datei mit GPS, sendet FitFitr eine gerundete Koordinate an Apple, um den Ort zu benennen, und die Routenkarte lädt von Apple Karten.</li>
 <li>Analyse und Absturzberichte sind aus, bis du sie einschaltest. Sie enthalten nie deinen GPS-Track, deine Sensorwerte, Dateinamen oder Aktivitätszeiten.</li>
 <li>Du kannst sie jederzeit wieder ausschalten.</li>
 </ul>
@@ -60,7 +60,7 @@
 <a href="#verantwortlich">Verantwortlich</a>
 <a href="#geraet">Was auf deinem Gerät bleibt</a>
 <a href="#analyse">Analyse und Absturzberichte</a>
-<a href="#orte">Ortsnamen</a>
+<a href="#orte">Ortsnamen und Routenkarte</a>
 <a href="#strava">Strava</a>
 <a href="#label">Das Datenschutz-Label im App Store</a>
 <a href="#empfaenger">Wer was erhält</a>
@@ -81,7 +81,7 @@
 <section id="geraet">
 <h2>Was auf deinem Gerät bleibt</h2>
 <p>FitFitr liest eine <span class="nb"><code class="ext">.fit</code>-Datei</span>, zeigt dir die Änderung und schreibt das Ergebnis dorthin, wo du es haben willst. Das alles passiert auf deinem iPhone oder iPad. Es gibt kein Konto und keinen eigenen Server von FitFitr, an den deine Datei gehen könnte.</p>
-<p>Deine Datei geht nur dorthin, wohin du sie schickst. Zwei andere Dinge können dein Gerät verlassen, beide unten beschrieben: Analyse und Absturzberichte, wenn du zustimmst, und eine gerundete Koordinate für den Ortsnamen.</p>
+<p>Deine Datei geht nur dorthin, wohin du sie schickst. Drei andere Dinge können dein Gerät verlassen, alle unten beschrieben: Analyse und Absturzberichte, wenn du zustimmst, eine gerundete Koordinate für den Ortsnamen und Kartenanfragen für die Routenkarte.</p>
 </section>
 
 <section id="analyse" class="stack-lg">
@@ -228,10 +228,11 @@
 </section>
 
 <section id="orte">
-<h2>Ortsnamen</h2>
+<h2>Ortsnamen und Routenkarte</h2>
 <p>Um eine Fahrt mit dem Ort zu betiteln, an dem sie begann, fragt FitFitr einmal bei Apple Karten nach der ersten Position der Datei. Die Koordinate wird auf etwa 110 Meter gerundet an Apple gesendet, sonst nichts: nicht der übrige Track, nicht die Datei, nicht ihr Name. An Google oder andere geht sie nicht.</p>
 <p>Das geschieht automatisch, nur bei einer Datei mit GPS-Daten, solange sie in der Detailansicht geöffnet ist. Der Ortsname bleibt nur im Arbeitsspeicher und wird nie in deine Datei geschrieben. Die Analyse erhält ihn nicht.</p>
-<p><strong>Rechtsgrundlage und deine Wahl.</strong> Grundlage ist unser Interesse, einer Datei einen lesbaren Titel zu geben (Art. 6 Abs. 1 lit. f DSGVO). Die erste Position kann nah an deinem Zuhause liegen, daher kannst du widersprechen (siehe <a href="#rechte">deine Rechte</a>). Einen Schalter dafür hat die App noch nicht. Bis dahin öffne Dateien, während dein Gerät offline ist: Dann erreicht keine Anfrage Apple, und der Titel bleibt ohne Ort. Apple Distribution International Limited bearbeitet die Anfrage nach <a href="https://www.apple.com/legal/privacy/de-ww/">ihrer Datenschutzrichtlinie</a>. Laut Apple sind Übermittlungen aus dem EWR durch Standardvertragsklauseln abgesichert. [Entwurf, nach juristischer Prüfung zu bestätigen.]</p>
+<p><strong>Die Routenkarte.</strong> Die Route wird auf deinem Gerät gezeichnet, auf einer Karte, die von Apple Karten lädt. Apple erhält den Kartenausschnitt auf dem Bildschirm und deine IP-Adresse, aber nicht den Track oder die Datei.</p>
+<p><strong>Rechtsgrundlage und deine Wahl.</strong> Grundlage ist unser Interesse, einer Datei einen lesbaren Titel zu geben und ihre Route auf einer Karte zu zeigen (Art. 6 Abs. 1 lit. f DSGVO). Die erste Position kann nah an deinem Zuhause liegen, daher kannst du widersprechen (siehe <a href="#rechte">deine Rechte</a>). Einen Schalter dafür hat die App noch nicht. Bis dahin öffne Dateien, während dein Gerät offline ist: Dann erreicht keine Anfrage Apple, der Titel bleibt ohne Ort, und die Karte bleibt womöglich leer. Apple Distribution International Limited bearbeitet diese Anfragen nach <a href="https://www.apple.com/legal/privacy/de-ww/">ihrer Datenschutzrichtlinie</a>. Laut Apple sind Übermittlungen aus dem EWR durch Standardvertragsklauseln abgesichert. [Entwurf, nach juristischer Prüfung zu bestätigen.]</p>
 </section>
 
 <section id="strava">
@@ -257,7 +258,7 @@
 <li><strong>Absturzdaten.</strong> Absturzberichte und die Ereignisnamen unmittelbar davor. Damit die App funktioniert.</li>
 <li><strong>Sonstige Diagnosedaten.</strong> Die Geräte- und iOS-Angaben, die ein Absturzbericht enthält. Damit die App funktioniert.</li>
 </ul>
-<p>Strava und Apple Karten stehen nicht im Label. Deine Datei geht von deinem Gerät an dein eigenes Strava-Konto, und FitFitr kann sie nicht lesen. Die Ortssuche geht an Apple, nie an FitFitr. Herzfrequenz, Leistung, GPS und Athletendaten werden auf deinem Gerät angezeigt und nie erhoben.</p>
+<p>Strava und Apple Karten stehen nicht im Label. Deine Datei geht von deinem Gerät an dein eigenes Strava-Konto, und FitFitr kann sie nicht lesen. Ortssuche und Routenkarte gehen an Apple, nie an FitFitr. Herzfrequenz, Leistung, GPS und Athletendaten werden auf deinem Gerät angezeigt und nie erhoben.</p>
 </section>
 
 <section id="empfaenger" class="stack-lg">
@@ -265,7 +266,7 @@
 <ul class="recipient-cards">
 <li><strong>Google (Firebase)</strong><span>Nur nach deiner Zustimmung: Ereignisse aus festen Listen, Absturzberichte, zufällige Installationskennungen</span></li>
 <li><strong>Google (Analytics, Website)</strong><span>Nur nachdem du im Banner zustimmst: besuchte Seiten, Herkunftsseite, Browser- und Gerätetyp, Sprache, eine zufällige Cookie-Kennung, IP-Adresse</span></li>
-<li><strong>Apple (Karten)</strong><span>Automatisch, wenn eine Datei mit GPS geöffnet ist: eine auf etwa 110 m gerundete Koordinate</span></li>
+<li><strong>Apple (Karten)</strong><span>Automatisch, wenn eine Datei mit GPS geöffnet ist: eine auf etwa 110 m gerundete Koordinate und Kartenanfragen für den Bereich auf dem Bildschirm</span></li>
 <li><strong>Strava</strong><span>Nur wenn du auf Hochladen tippst: die <span class="nb"><code class="ext">.fit</code>-Datei</span> und der Text, den du eingegeben hast</span></li>
 <li><strong>GitHub (Hosting)</strong><span>Wenn du eine Seite dieser Website öffnest: IP-Adresse und technische Browserdaten</span></li>
 <li><strong>Apple (iCloud Mail)</strong><span>Wenn du uns schreibst: deine Adresse, deine Nachricht und alle Anhänge</span></li>
@@ -297,7 +298,7 @@
 <section id="rechte">
 <h2>Deine Entscheidungen und Rechte</h2>
 <p>Analyse und Absturzberichte kannst du in den Einstellungen der App jederzeit ausschalten. Damit widerrufst du deine Einwilligung: Die Erhebung endet, was auf deinem Gerät noch auf das Senden wartete, wird gelöscht, und die Installationskennung wird zurückgesetzt. Die Verarbeitung bis dahin bleibt rechtmäßig. Auf dieser Website nutzt du dafür „Datenschutzeinstellungen“ in der Fußzeile.</p>
-<p><strong>Dein Widerspruchsrecht.</strong> Wo wir uns auf unser eigenes Interesse stützen (Art. 6 Abs. 1 lit. f DSGVO), kannst du jederzeit aus Gründen widersprechen, die sich aus deiner besonderen Situation ergeben (Art. 21 DSGVO). Das betrifft die Ortssuche, das Hosting dieser Website und den Umgang mit deinen Mails. Schreib an <a href="mailto:privacy@fitfitr.app">privacy@fitfitr.app</a>.</p>
+<p><strong>Dein Widerspruchsrecht.</strong> Wo wir uns auf unser eigenes Interesse stützen (Art. 6 Abs. 1 lit. f DSGVO), kannst du jederzeit aus Gründen widersprechen, die sich aus deiner besonderen Situation ergeben (Art. 21 DSGVO). Das betrifft die Ortssuche, die Routenkarte, das Hosting dieser Website und den Umgang mit deinen Mails. Schreib an <a href="mailto:privacy@fitfitr.app">privacy@fitfitr.app</a>.</p>
 <p><strong>Deine weiteren Rechte.</strong> Nach der DSGVO hast du außerdem das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung und Datenübertragbarkeit. Schreib an <a href="mailto:privacy@fitfitr.app">privacy@fitfitr.app</a>. FitFitr hat kein Konto, und Analyse-Ereignisse tragen nur eine zufällige Kennung, daher können wir Daten meist nicht über deine Person finden.</p>
 <p><strong>Deine Daten löschen.</strong> Löschst du die App, verschwinden die Dateien, die sie auf deinem Gerät hält. Trenne vorher Strava, damit auch das Anmelde-Token gelöscht wird. Beim Ausschalten der Analyse wird die Kennung zurückgesetzt, spätere Ereignisse lassen sich also nicht mit früheren verknüpfen, und Google löscht die früheren Daten nach den oben genannten Fristen. Eine hochgeladene Aktivität löschst du bei Strava. Damit wir deine Mails löschen, schreib an <a href="mailto:privacy@fitfitr.app">privacy@fitfitr.app</a>.</p>
 <p><strong>Beschwerde.</strong> Du kannst dich bei einer Datenschutz-Aufsichtsbehörde beschweren, insbesondere dort, wo du lebst oder arbeitest. Zuständig für FitFitr ist der Landesbeauftragte für den Datenschutz und die Informationsfreiheit Baden-Württemberg (LfDI BW).</p>

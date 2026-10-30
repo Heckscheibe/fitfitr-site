@@ -46,7 +46,7 @@
 <h2>The short version</h2>
 <ul>
 <li>Your <code class="ext">.fit</code> files are opened and edited on your device. FitFitr has no account and no server of its own.</li>
-<li>Your file leaves your device only when you share it or upload it to Strava. One exception: when you open a file with GPS, FitFitr sends one rounded coordinate to Apple to name the town.</li>
+<li>Your file leaves your device only when you share it or upload it to Strava. When you open a file with GPS, FitFitr sends one rounded coordinate to Apple to name the town, and the route map loads from Apple Maps.</li>
 <li>Analytics and crash reports are off until you switch them on. They never contain your GPS track, your sensor readings, file names or activity times.</li>
 <li>You can switch them off again at any time.</li>
 </ul>
@@ -60,7 +60,7 @@
 <a href="#who">Who is responsible</a>
 <a href="#device">What stays on your device</a>
 <a href="#analytics">Analytics and crash reports</a>
-<a href="#places">Place names</a>
+<a href="#places">Place names and the route map</a>
 <a href="#strava">Strava</a>
 <a href="#label">The App Store privacy label</a>
 <a href="#recipients">Who receives what</a>
@@ -81,7 +81,7 @@
 <section id="device">
 <h2>What stays on your device</h2>
 <p>FitFitr reads a <code class="ext">.fit</code> file, shows you the edit, and writes the result where you tell it to. All of that happens on your iPhone or iPad. There is no account to create and no server of FitFitr's own that your file could be sent to.</p>
-<p>Your file goes only where you send it. Two other things can leave your device, both described below: analytics and crash reports, if you agree, and one rounded coordinate for the place name.</p>
+<p>Your file goes only where you send it. Three other things can leave your device, all described below: analytics and crash reports, if you agree, one rounded coordinate for the place name, and map requests for the route map.</p>
 </section>
 
 <section id="analytics" class="stack-lg">
@@ -228,10 +228,11 @@
 </section>
 
 <section id="places">
-<h2>Place names</h2>
+<h2>Place names and the route map</h2>
 <p>To title a ride with the town it started in, FitFitr asks Apple Maps once for the file's first position fix. The coordinate is rounded to about 110 metres and sent to Apple, and nothing else goes with it: not the rest of the track, not the file, not its name. It is not sent to Google or to anyone else.</p>
 <p>This happens automatically, only for a file that has GPS data, while it is open on the detail screen. The town name is kept in memory while the app runs and is never written into your file. Analytics does not receive it.</p>
-<p><strong>Legal basis and your choice.</strong> The basis is our interest in giving a file a readable title (Art. 6(1)(f) GDPR). The first position fix can be close to your home, so you can object (see <a href="#rights">your rights</a>). The app has no switch for this yet. Until it has one, open files while your device is offline: no lookup reaches Apple, and the title goes without a place. Apple Distribution International Limited handles the request under <a href="https://www.apple.com/legal/privacy/en-ww/">its privacy policy</a>. Apple says transfers out of the EEA are covered by standard contractual clauses. [Draft, to be confirmed in legal review.]</p>
+<p><strong>The route map.</strong> The route is drawn on your device, on a map that loads from Apple Maps. Apple receives the map area on screen and your IP address, but not the track or the file.</p>
+<p><strong>Legal basis and your choice.</strong> The basis is our interest in giving a file a readable title and showing its route on a map (Art. 6(1)(f) GDPR). The first position fix can be close to your home, so you can object (see <a href="#rights">your rights</a>). The app has no switch for this yet. Until it has one, open files while your device is offline: no request reaches Apple, the title goes without a place and the map may stay empty. Apple Distribution International Limited handles these requests under <a href="https://www.apple.com/legal/privacy/en-ww/">its privacy policy</a>. Apple says transfers out of the EEA are covered by standard contractual clauses. [Draft, to be confirmed in legal review.]</p>
 </section>
 
 <section id="strava">
@@ -257,7 +258,7 @@
 <li><strong>Crash data.</strong> Crash reports and the event names that came just before. Used to keep the app working.</li>
 <li><strong>Other diagnostic data.</strong> The device and iOS information a crash report carries. Used to keep the app working.</li>
 </ul>
-<p>The label does not list Strava or Apple Maps. Your file goes from your device to your own Strava account, and FitFitr cannot read it. The place lookup goes to Apple, never to FitFitr. Heart rate, power, GPS and athlete data are shown on your device and never collected.</p>
+<p>The label does not list Strava or Apple Maps. Your file goes from your device to your own Strava account, and FitFitr cannot read it. The place lookup and the route map go to Apple, never to FitFitr. Heart rate, power, GPS and athlete data are shown on your device and never collected.</p>
 </section>
 
 <section id="recipients" class="stack-lg">
@@ -270,7 +271,7 @@
 <tbody role="rowgroup">
 <tr role="row"><th scope="row" role="rowheader">Google (Firebase)</th><td role="cell" data-label="When">Only after you agree</td><td role="cell" data-label="What">Fixed-list events, crash reports, random installation IDs</td></tr>
 <tr role="row"><th scope="row" role="rowheader">Google (Analytics, website)</th><td role="cell" data-label="When">Only after you accept the banner</td><td role="cell" data-label="What">Pages visited, referrer, browser and device type, language, a random cookie ID, IP address</td></tr>
-<tr role="row"><th scope="row" role="rowheader">Apple (Maps)</th><td role="cell" data-label="When">Automatically, when a file with GPS is open</td><td role="cell" data-label="What">One coordinate, rounded to about 110 m</td></tr>
+<tr role="row"><th scope="row" role="rowheader">Apple (Maps)</th><td role="cell" data-label="When">Automatically, when a file with GPS is open</td><td role="cell" data-label="What">One coordinate, rounded to about 110 m, and map requests for the area on screen</td></tr>
 <tr role="row"><th scope="row" role="rowheader">Strava</th><td role="cell" data-label="When">Only when you tap upload</td><td role="cell" data-label="What">The <code class="ext">.fit</code> file and the text you entered</td></tr>
 <tr role="row"><th scope="row" role="rowheader">GitHub (hosting)</th><td role="cell" data-label="When">When you open a page of this website</td><td role="cell" data-label="What">IP address and technical browser data</td></tr>
 <tr role="row"><th scope="row" role="rowheader">Apple (iCloud Mail)</th><td role="cell" data-label="When">When you email us</td><td role="cell" data-label="What">Your address, your message and any attachment</td></tr>
@@ -304,7 +305,7 @@
 <section id="rights">
 <h2>Your choices and rights</h2>
 <p>You can turn analytics and crash reports off in the app's Settings at any time. That withdraws your consent: it stops collection, deletes whatever was queued on your device but not yet sent, and resets the installation ID. Processing before that stays lawful. On this website, use "Privacy settings" in the footer.</p>
-<p><strong>Your right to object.</strong> Where we rely on our own interest (Art. 6(1)(f) GDPR), you can object at any time for reasons arising from your particular situation (Art. 21 GDPR). This covers the place-name lookup, the hosting of this website and our handling of your emails. Write to <a href="mailto:privacy@fitfitr.app">privacy@fitfitr.app</a>.</p>
+<p><strong>Your right to object.</strong> Where we rely on our own interest (Art. 6(1)(f) GDPR), you can object at any time for reasons arising from your particular situation (Art. 21 GDPR). This covers the place-name lookup, the route map, the hosting of this website and our handling of your emails. Write to <a href="mailto:privacy@fitfitr.app">privacy@fitfitr.app</a>.</p>
 <p><strong>Your other rights.</strong> Under the GDPR you also have the right to access, rectification, erasure, restriction of processing and data portability. Write to <a href="mailto:privacy@fitfitr.app">privacy@fitfitr.app</a>. FitFitr has no account, and analytics events carry only a random ID, so we usually cannot find data by who you are.</p>
 <p><strong>Deleting your data.</strong> Deleting the app removes the files it keeps on your device. Disconnect Strava first, so that the sign-in token goes too. Turning analytics off resets the ID, so later events cannot be linked to earlier ones, and Google deletes the earlier data after the periods above. Delete an uploaded activity on Strava. To have your emails deleted, write to <a href="mailto:privacy@fitfitr.app">privacy@fitfitr.app</a>.</p>
 <p><strong>Complaints.</strong> You can complain to a data protection authority, in particular where you live or work. The authority for FitFitr is the State Commissioner for Data Protection and Freedom of Information of Baden-Württemberg (LfDI BW).</p>

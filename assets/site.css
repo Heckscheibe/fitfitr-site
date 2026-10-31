@@ -783,65 +783,6 @@ details.events > .events-intro { margin: 0 0 16px; color: var(--ink2); }
   .theme-toggle, .skip { display: none; }
 }
 
-/* Consent banner and footer link (assets/consent.js) */
-
-.footer-link {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 0;
-  border: 0;
-  background: none;
-  color: var(--link);
-  font: inherit;
-  text-decoration: underline;
-  cursor: pointer;
-}
-.footer-link:hover { color: var(--link-hover); }
-
-.consent {
-  position: fixed;
-  inset: auto var(--gutter) var(--gutter) var(--gutter);
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  max-width: 560px;
-  margin-inline: auto;
-  padding: 20px;
-  border: 1px solid var(--line2);
-  border-radius: 16px;
-  background: var(--card);
-  color: var(--ink);
-}
-
-.consent-text {
-  margin: 0;
-  font-size: 15px;
-  line-height: 22px;
-  color: var(--ink2);
-}
-
-.consent-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.consent-button {
-  flex: 1 1 140px;
-  min-height: 48px;
-  padding: 0 24px;
-  border: 1px solid var(--line3);
-  border-radius: 999px;
-  background: var(--bg);
-  color: var(--ink);
-  font: inherit;
-  font-weight: 600;
-  cursor: pointer;
-}
-.consent-button:hover { border-color: var(--ink); }
-
 /* Landing page and guides */
 
 .lp-hero {

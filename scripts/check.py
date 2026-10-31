@@ -11,8 +11,8 @@ Fails (exit 1) on:
   - a root page that does not load assets/lang-redirect.js before the stylesheet,
     or lacks the <noscript> meta refresh to /en/
   - an indexable page without Open Graph tags, or a 404 page that is not noindex
-  - a page that does not load assets/consent.js (the root and 404 pages are exempt), or any file other
-    than consent.js that names the analytics host
+  - any file that names a tracking host (the site runs no analytics and no cookies)
+  - an App Store link without pt= and ct= campaign tokens
   - a missing robots.txt or llms.txt, or a sitemap that does not list every indexable page
   - JSON-LD that does not parse
 Warns (does not fail) about every remaining [bracketed placeholder].
@@ -30,8 +30,8 @@ ROOT = Path(__file__).resolve().parent.parent
 DOMAIN = "fitfitr.app"
 ORIGIN = "https://" + DOMAIN
 SKIP_DIRS = {".git", "scripts", "node_modules"}
-TRACKING_HOST = "googletagmanager.com"
-NO_CONSENT_PAGES = {"index.html", "404.html"}
+TRACKING_HOSTS = ("googletagmanager.com", "google-analytics.com")
+EXEMPT_PAGES = {"index.html", "404.html"}
 RESOURCE_REL = {"stylesheet", "icon", "shortcut", "apple-touch-icon", "preload", "modulepreload", "manifest", "mask-icon"}
 VOID = {"meta", "link", "img", "br", "hr", "input", "source", "area", "base", "col", "embed", "param", "track", "wbr"}
 
@@ -145,17 +145,16 @@ def main():
                 json.loads(blob)
             except ValueError as exc:
                 errors.append(f"{name}: JSON-LD does not parse: {exc}")
-        if TRACKING_HOST in raw:
-            errors.append(f"{name}: names {TRACKING_HOST}; only assets/consent.js may")
+        for host in TRACKING_HOSTS:
+            if host in raw:
+                errors.append(f"{name}: names the tracking host {host}")
         if name == "404.html":
             if "noindex" not in p.meta.get("robots", ""):
                 errors.append("404.html: missing <meta name=\"robots\" content=\"noindex\">")
-        elif name not in NO_CONSENT_PAGES:
+        elif name not in EXEMPT_PAGES:
             for prop in ("og:title", "og:description", "og:url", "og:image", "og:type"):
                 if not p.props.get(prop):
                     errors.append(f"{name}: missing <meta property=\"{prop}\">")
-        if name not in NO_CONSENT_PAGES and '<script src="/assets/consent.js" defer></script>' not in raw:
-            errors.append(f"{name}: does not load /assets/consent.js")
         if re.search(r'<script(?![^>]*\bsrc=)(?![^>]*type="application/ld\+json")[^>]*>', raw):
             errors.append(f"{name}: contains an inline <script>")
 
@@ -248,24 +247,16 @@ def main():
             store_links += 1
             tag, href = m.group(0), m.group(1)
             q = urlsplit(href).query
-            if not re.search(r'data-store="(hero|final|guide)"', tag):
-                errors.append(f"{rel(f)}: App Store link without data-store=hero|final|guide: {href}")
             if "pt=" not in q or "ct=" not in q:
                 errors.append(f"{rel(f)}: App Store link without pt= and ct= campaign tokens: {href}")
     if store_links == 0:
         warnings.append("no App Store link yet: the store blocks still say Coming soon (see WEBSITE.md)")
 
-    consent = ROOT / "assets" / "consent.js"
-    if not consent.is_file():
-        errors.append("assets/consent.js is missing")
-    else:
-        c = consent.read_text(encoding="utf-8")
-        for needle in ("analytics_storage: 'denied'", "ad_storage: 'denied'", "allow_google_signals: false"):
-            if needle not in c:
-                errors.append(f"assets/consent.js: expected {needle}")
-    for other in (ROOT / "assets").glob("*.js"):
-        if other.name != "consent.js" and TRACKING_HOST in other.read_text(encoding="utf-8"):
-            errors.append(f"assets/{other.name}: names {TRACKING_HOST}; only consent.js may")
+    for js in (ROOT / "assets").glob("*.js"):
+        text = js.read_text(encoding="utf-8")
+        for host in TRACKING_HOSTS:
+            if host in text:
+                errors.append(f"assets/{js.name}: names the tracking host {host}")
 
     robots = ROOT / "robots.txt"
     if not robots.is_file():
@@ -281,7 +272,7 @@ def main():
         listed = set(re.findall(r"<loc>(.*?)</loc>", sitemap.read_text(encoding="utf-8")))
         indexable = set()
         for f, (p, raw) in pages.items():
-            if rel(f) in NO_CONSENT_PAGES or "noindex" in p.meta.get("robots", ""):
+            if rel(f) in EXEMPT_PAGES or "noindex" in p.meta.get("robots", ""):
                 continue
             canon = [h for c, h in p.alternates if c == p.lang]
             if canon:

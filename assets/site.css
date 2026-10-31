@@ -950,3 +950,48 @@ details.events > .events-intro { margin: 0 0 16px; color: var(--ink2); }
 :root[data-theme="dark"] .mark {
   background: linear-gradient(transparent 86%, var(--lime) 86%, var(--lime) 96%, transparent 96%);
 }
+
+/* Entrance motion (assets/motion.js adds .motion, and only without a reduced-motion preference).
+   Every piece starts hidden under .motion and settles once its chart or list gets .in. */
+:root {
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-draw: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.motion .anim .draw { stroke-dasharray: 1 2; stroke-dashoffset: 1; }
+.motion .anim .fade,
+.motion .anim .swap-in { opacity: 0; }
+.motion .anim .rise { opacity: 0; transform: translateY(-8px); }
+
+.motion .anim.in .draw {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset var(--d, 0.9s) var(--ease-draw) calc(var(--delay, 0s) + var(--stag, 0s));
+}
+.motion .anim.in .fade {
+  opacity: 1;
+  transition: opacity var(--d, 0.6s) ease calc(var(--delay, 0s) + var(--stag, 0s));
+}
+.motion .anim.in .rise {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.5s ease calc(var(--delay, 0s) + var(--stag, 0s)), transform 0.7s var(--ease-out) calc(var(--delay, 0s) + var(--stag, 0s));
+}
+/* The hero ends by swapping the spiky series for the edited one. */
+.motion .anim.in .swap-in { opacity: 1; transition: opacity 0.8s ease 3.2s; }
+.motion .anim.in .swap-out { opacity: 0; transition: opacity 0.8s ease 3.2s; }
+
+/* The marker under "anywhere." swipes in once. */
+:root.motion .mark { background-repeat: no-repeat; background-position: left bottom; background-size: 0% 100%; }
+:root.motion.ready .mark { background-size: 100% 100%; transition: background-size 0.9s var(--ease-out) 0.45s; }
+
+/* The lime rule above each step draws left to right, one after the other. */
+.motion .lp-steps li {
+  border-top-color: transparent;
+  background: linear-gradient(var(--lime), var(--lime)) left top / 0% 3px no-repeat border-box;
+}
+.motion .lp-steps.in li {
+  background-size: 100% 3px;
+  transition: background-size 0.8s var(--ease-out);
+}
+.motion .lp-steps.in li:nth-child(2) { transition-delay: 0.15s; }
+.motion .lp-steps.in li:nth-child(3) { transition-delay: 0.3s; }

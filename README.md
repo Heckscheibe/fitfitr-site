@@ -91,14 +91,10 @@ and for the guides in #812.
 
 ## Open placeholders
 
-These are deliberately left in square brackets. They are unresolved decisions, not typos.
-
-The responsible party (Nicolas Hiller and his postal address) and the policy date (12 October 2026) are
+The responsible party (Nicolas Hiller and his postal address) and the policy date are
 filled in. When the policy text changes, run `python3 scripts/set_policy_date.py` as the last step
 before merging to `main`. The site has no build step, so the date cannot follow a deploy by itself.
 
-- The hosting sentence in "This website" (GitHub Pages and server logs), pending legal review.
-- The rights paragraph in "Your choices and rights", pending legal review.
 - The landing page shows a plain "Coming soon to the App Store" label where Apple's official badge
   and the store URL go once the app is listed (see the `TODO` comment in `en/index.html` and
   `de/index.html`).

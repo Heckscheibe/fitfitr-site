@@ -10,10 +10,16 @@ Fails (exit 1) on:
   - a missing or wrong CNAME, or a missing .nojekyll
   - a root page that does not load assets/lang-redirect.js before the stylesheet,
     or lacks the <noscript> meta refresh to /en/
+  - an indexable page without Open Graph tags, or a 404 page that is not noindex
+  - any file that names a tracking host (the site runs no analytics and no cookies)
+  - an App Store link without pt= and ct= campaign tokens
+  - a missing robots.txt or llms.txt, or a sitemap that does not list every indexable page
+  - JSON-LD that does not parse
 Warns (does not fail) about every remaining [bracketed placeholder].
 
 Usage: python3 scripts/check.py
 """
+import json
 import re
 import sys
 from html.parser import HTMLParser
@@ -24,6 +30,8 @@ ROOT = Path(__file__).resolve().parent.parent
 DOMAIN = "fitfitr.app"
 ORIGIN = "https://" + DOMAIN
 SKIP_DIRS = {".git", "scripts", "node_modules"}
+TRACKING_HOSTS = ("googletagmanager.com", "google-analytics.com")
+EXEMPT_PAGES = {"index.html", "404.html"}
 RESOURCE_REL = {"stylesheet", "icon", "shortcut", "apple-touch-icon", "preload", "modulepreload", "manifest", "mask-icon"}
 VOID = {"meta", "link", "img", "br", "hr", "input", "source", "area", "base", "col", "embed", "param", "track", "wbr"}
 
@@ -35,6 +43,9 @@ class Page(HTMLParser):
         self.title = ""
         self._in_title = False
         self.meta = {}
+        self.props = {}
+        self.jsonld = []
+        self._ld = False
         self.ids = set()
         self.links = []        # (tag, attr, value, rel)
         self.alternates = []   # (hreflang, href)
@@ -51,6 +62,11 @@ class Page(HTMLParser):
             self._in_title = True
         if tag == "meta" and a.get("name"):
             self.meta[a["name"]] = a.get("content", "")
+        if tag == "meta" and a.get("property"):
+            self.props[a["property"]] = a.get("content", "")
+        if tag == "script" and a.get("type") == "application/ld+json":
+            self._ld = True
+            self.jsonld.append("")
         if "id" in a:
             self.ids.add(a["id"])
         if tag == "h1":
@@ -69,8 +85,12 @@ class Page(HTMLParser):
             self._in_title = False
         if tag in ("script", "style") and self.skip_text:
             self.skip_text -= 1
+        if tag == "script":
+            self._ld = False
 
     def handle_data(self, data):
+        if self._ld:
+            self.jsonld[-1] += data
         if self._in_title:
             self.title += data
         if not self.skip_text:
@@ -119,7 +139,23 @@ def main():
             errors.append(f"{name}: expected exactly one h1, found {p.h1}")
         if "http://" in raw:
             errors.append(f"{name}: contains an http:// URL")
-        if re.search(r"<script(?![^>]*\bsrc=)[^>]*>", raw):
+
+        for blob in p.jsonld:
+            try:
+                json.loads(blob)
+            except ValueError as exc:
+                errors.append(f"{name}: JSON-LD does not parse: {exc}")
+        for host in TRACKING_HOSTS:
+            if host in raw:
+                errors.append(f"{name}: names the tracking host {host}")
+        if name == "404.html":
+            if "noindex" not in p.meta.get("robots", ""):
+                errors.append("404.html: missing <meta name=\"robots\" content=\"noindex\">")
+        elif name not in EXEMPT_PAGES:
+            for prop in ("og:title", "og:description", "og:url", "og:image", "og:type"):
+                if not p.props.get(prop):
+                    errors.append(f"{name}: missing <meta property=\"{prop}\">")
+        if re.search(r'<script(?![^>]*\bsrc=)(?![^>]*type="application/ld\+json")[^>]*>', raw):
             errors.append(f"{name}: contains an inline <script>")
 
         for tag, attr, value, relv in p.links:
@@ -202,6 +238,50 @@ def main():
         if not (ROOT / "assets" / "lang-redirect.js").is_file():
             errors.append("assets/lang-redirect.js is missing")
 
+    store_links = 0
+    for f in sorted(ROOT.rglob("*.html")):
+        if ".git" in f.parts:
+            continue
+        raw = f.read_text(encoding="utf-8")
+        for m in re.finditer(r'<a\b[^>]*href="(https://apps\.apple\.com[^"]*)"[^>]*>', raw):
+            store_links += 1
+            tag, href = m.group(0), m.group(1)
+            q = urlsplit(href).query
+            if "pt=" not in q or "ct=" not in q:
+                errors.append(f"{rel(f)}: App Store link without pt= and ct= campaign tokens: {href}")
+    if store_links == 0:
+        warnings.append("no App Store link yet: the store blocks still say Coming soon (see WEBSITE.md)")
+
+    for js in (ROOT / "assets").glob("*.js"):
+        text = js.read_text(encoding="utf-8")
+        for host in TRACKING_HOSTS:
+            if host in text:
+                errors.append(f"assets/{js.name}: names the tracking host {host}")
+
+    robots = ROOT / "robots.txt"
+    if not robots.is_file():
+        errors.append("robots.txt is missing")
+    elif f"Sitemap: {ORIGIN}/sitemap.xml" not in robots.read_text(encoding="utf-8"):
+        errors.append("robots.txt: missing the Sitemap line")
+    if not (ROOT / "llms.txt").is_file():
+        errors.append("llms.txt is missing")
+    sitemap = ROOT / "sitemap.xml"
+    if not sitemap.is_file():
+        errors.append("sitemap.xml is missing")
+    else:
+        listed = set(re.findall(r"<loc>(.*?)</loc>", sitemap.read_text(encoding="utf-8")))
+        indexable = set()
+        for f, (p, raw) in pages.items():
+            if rel(f) in EXEMPT_PAGES or "noindex" in p.meta.get("robots", ""):
+                continue
+            canon = [h for c, h in p.alternates if c == p.lang]
+            if canon:
+                indexable.add(canon[0])
+        for url in sorted(indexable - listed):
+            errors.append(f"sitemap.xml: does not list {url}")
+        for url in sorted(listed - indexable):
+            errors.append(f"sitemap.xml: lists {url}, which is not an indexable page")
+
     cname = ROOT / "CNAME"
     if not cname.is_file() or cname.read_text() != DOMAIN:
         errors.append("CNAME must contain exactly '%s' (no trailing newline)" % DOMAIN)
@@ -218,7 +298,7 @@ def main():
         for e in errors:
             print("  [FAIL] " + e)
         return 1
-    print("\nOK: all internal links, anchors and hreflang pairs resolve; no external resources.")
+    print("\nOK: all internal links, anchors and hreflang pairs resolve; no external resources in the markup.")
     return 0
 
 

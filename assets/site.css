@@ -19,6 +19,11 @@
   --inset: #EEF0E6;
   --lime: #C6F432;
   --sel: 0.5;
+  --hr: #DC2626;
+  --speed: #2563EB;
+  --cmp-a: #C2410C;
+  --cmp-b: #063C4C;
+  --attention: #6E1D00;
   color-scheme: light;
 
   --font: -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", sans-serif;
@@ -46,6 +51,11 @@
     --inset: #121212;
     --lime: #C6F432;
     --sel: 0.16;
+    --hr: #F87171;
+    --speed: #60A5FA;
+    --cmp-a: #FFBE7A;
+    --cmp-b: #46A4BB;
+    --attention: #FFDBC2;
     color-scheme: dark;
   }
 }
@@ -68,6 +78,11 @@
   --inset: #121212;
   --lime: #C6F432;
   --sel: 0.16;
+  --hr: #F87171;
+  --speed: #60A5FA;
+  --cmp-a: #FFBE7A;
+  --cmp-b: #46A4BB;
+  --attention: #FFDBC2;
   color-scheme: dark;
 }
 
@@ -821,28 +836,9 @@ details.events > .events-intro { margin: 0 0 16px; color: var(--ink2); }
   border-radius: 28px;
   background: var(--surface);
 }
-.lp-mock-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px; }
-.lp-mock-head b { font-size: 17px; }
-.lp-mock-head span { font-family: var(--mono); font-size: 12px; color: var(--ink3); }
+.lp-mock-note { margin: 0; text-align: right; font-family: var(--mono); font-size: 12px; color: var(--ink3); }
 .lp-mock svg { display: block; width: 100%; height: auto; }
-.lp-stats { display: flex; flex-wrap: wrap; gap: 10px; }
-.lp-stat { flex: 1 1 120px; padding: 12px 14px; border-radius: 14px; background: var(--inset); }
-.lp-stat small { display: block; font-size: 12px; line-height: 16px; color: var(--ink3); }
-.lp-stat strong { display: block; margin-top: 2px; font-size: 21px; line-height: 28px; }
-.lp-stat s { color: var(--ink3); font-weight: 400; }
-.lp-stat em { font-style: normal; color: var(--accent); }
-.lp-mock-actions { display: flex; flex-wrap: wrap; gap: 10px; }
-.lp-fake {
-  flex: 1 1 130px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 46px;
-  border: 1px solid var(--line3);
-  border-radius: 999px;
-  font-weight: 600;
-}
-.lp-fake-primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.lp-mock svg text { font-family: var(--font); }
 
 .lp-band {
   display: flex;
@@ -859,7 +855,7 @@ details.events > .events-intro { margin: 0 0 16px; color: var(--ink2); }
 
 .lp-cards { display: flex; flex-wrap: wrap; gap: 20px; }
 .lp-card {
-  flex: 1 1 320px;
+  flex: 1 1 280px;
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -870,6 +866,7 @@ details.events > .events-intro { margin: 0 0 16px; color: var(--ink2); }
   background: var(--surface);
 }
 .lp-card svg { display: block; width: 100%; height: auto; }
+.lp-card svg text { font-family: var(--font); }
 .lp-card h3 { font-size: 22px; line-height: 28px; }
 .lp-card p { font-size: 16px; line-height: 25px; color: var(--ink2); }
 .lp-card .lp-note { font-size: 14px; line-height: 21px; color: var(--ink3); }
